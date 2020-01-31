@@ -6,3 +6,4 @@ Builds/
 *.sln
 *.suo
 *.vs
+*.DS_Store
