@@ -327,10 +327,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3926ecfff700f4a078b8e12cf0bffe2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 50
-  movement: {x: 0, y: 0}
   playerNum: 0
   playerControllerBase: {fileID: 0}
+  speed: 50
+  movement: {x: 0, y: 0, z: 0}
 --- !u!1 &805245567
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -407,13 +407,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805245567}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &1895024955 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 48415347573732922, guid: c3eb17d577f54412dab1c849adb6888d,
