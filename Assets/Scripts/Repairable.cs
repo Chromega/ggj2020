@@ -45,7 +45,7 @@ public class Repairable : MonoBehaviour
         fixedObject.SetActive(false);
         brokenObject.SetActive(true);
         List<RepairType> currentAvailableItems = PickupableFactory.Instance.CurrentAvailableItemRepairTypes();
-        int index = Random.Range(0, currentAvailableItems.Count - 1);
+        int index = Random.Range(0, currentAvailableItems.Count);
         if (currentAvailableItems.Count > 0)
         {
             repairType = currentAvailableItems[index];
