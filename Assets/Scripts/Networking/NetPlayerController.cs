@@ -80,13 +80,13 @@ public class NetPlayerController : PlayerControllerBase
     void SetInputRpc(Vector2 pos)
     {
         this.input = pos;
-        Debug.Log("Client input is " + pos.x + ", " + pos.y);
+        //Debug.Log("Client input is " + pos.x + ", " + pos.y);
     }
 
     [PunRPC]
     void SetInventoryRpc(string[] netInventory)
     {
         this.netInventory = netInventory;
-        Debug.Log("Inventory is " + netInventory.Length + " items");
+        //Debug.Log("Inventory is " + netInventory.Length + " items");
     }
 }
