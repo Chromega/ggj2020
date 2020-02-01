@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public Inventory inventory;
-    public int velocity = 50;
-    public Vector2 movement;
     public int playerNum;
     public PlayerControllerBase playerControllerBase;
+
+    public Inventory inventory;
+
+    public int speed = 50;
+    public Vector3 movement;
+    private Quaternion rotateTo;
 
     private void Awake()
     {
@@ -26,26 +29,33 @@ public class PlayerScript : MonoBehaviour
         float inputX = input.x;
         float inputY = input.y;
 
-        Vector3 convertedX = Camera.main.transform.right*inputX;
+        Vector3 convertedX = Camera.main.transform.right * inputX;
         convertedX.y = 0;
         float oldXMagnitude = Mathf.Abs(inputX);
         float newXMagnitude = convertedX.magnitude;
-        if (newXMagnitude == 0)
+        if (newXMagnitude == 0) {
             convertedX = Vector3.zero;
-        else
-            convertedX *= oldXMagnitude/newXMagnitude;
+        } else {
+            convertedX *= oldXMagnitude / newXMagnitude;
+        }
 
 
-        Vector3 convertedY = Camera.main.transform.up*inputY;
+        Vector3 convertedY = Camera.main.transform.up * inputY;
         convertedY.y = 0;
         float oldYMagnitude = Mathf.Abs(inputY);
         float newYMagnitude = convertedY.magnitude;
-        if (newYMagnitude == 0)
+        if (newYMagnitude == 0) {
             convertedY = Vector3.zero;
-        else
-            convertedY *= oldYMagnitude/newYMagnitude;
+        } else {
+            convertedY *= oldYMagnitude / newYMagnitude;
+        }
 
-        transform.position += velocity * (convertedX + convertedY) * Time.deltaTime;
+        movement = convertedX + convertedY;
+        transform.position += speed * movement * Time.deltaTime;
+        if (movement != Vector3.zero) {
+            rotateTo = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotateTo, Time.deltaTime * 20);
+        }
     }
 
     public void SetPlayerController(PlayerControllerBase p) {
