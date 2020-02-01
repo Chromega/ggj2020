@@ -5,10 +5,14 @@ using UnityEngine;
 public class Game : Singleton<Game>
 {
     public VoyageManager voyage;
-    // Start is called before the first frame update
-    void Start()
+    public Ship ship;
+
+    public Inventory player1Inventory;
+    private void Awake()
     {
-        
+        ship = GameObject.Find("Ship").GetComponent<Ship>();
+        voyage = GetComponent<VoyageManager>();
+        UIManager.Instance.player1Inventory.AssignInventory(player1Inventory);
     }
 
     // Update is called once per frame

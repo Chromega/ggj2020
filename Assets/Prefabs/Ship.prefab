@@ -111,6 +111,7 @@ MonoBehaviour:
   movementSpeedPenalty: 0.2
   engines:
   - {fileID: 5731575829159630523}
+  sailing: 0
 --- !u!114 &5731575829159630523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _broken: 0
+  repairType: 0
   mesh: {fileID: 0}
 --- !u!1001 &5583048829003538795
 PrefabInstance:
@@ -135,22 +137,22 @@ PrefabInstance:
     - target: {fileID: 1376476949053182674, guid: 75ac8989823804c2981f2e77cc1dfd82,
         type: 3}
       propertyPath: m_Name
-      value: TestObject
+      value: Engine
       objectReference: {fileID: 0}
     - target: {fileID: 5751666207187914203, guid: 75ac8989823804c2981f2e77cc1dfd82,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.114
+      value: -0.354
       objectReference: {fileID: 0}
     - target: {fileID: 5751666207187914203, guid: 75ac8989823804c2981f2e77cc1dfd82,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9705541
+      value: 1.44
       objectReference: {fileID: 0}
     - target: {fileID: 5751666207187914203, guid: 75ac8989823804c2981f2e77cc1dfd82,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.199
+      value: -0.021
       objectReference: {fileID: 0}
     - target: {fileID: 5751666207187914203, guid: 75ac8989823804c2981f2e77cc1dfd82,
         type: 3}
