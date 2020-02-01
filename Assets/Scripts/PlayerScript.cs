@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
     public int velocity = 50;
     public Vector2 movement;
     public int playerNum;
-    private Collider myCollider;
+    public PlayerControllerBase playerControllerBase;
 
     private void Awake()
     {
@@ -17,21 +17,14 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myCollider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float inputX = 0;
-        float inputY = 0;
-        if (playerNum == 0) {
-            inputX = Input.GetAxis("P1_Horizontal");
-            inputY = Input.GetAxis("P1_Vertical");
-        } else if (playerNum == 1) {
-            inputX = Input.GetAxis("P2_Horizontal");
-            inputY = Input.GetAxis("P2_Vertical");
-        }
+        Vector2 input = playerControllerBase.GetInput();
+        float inputX = input.x;
+        float inputY = input.y;
 
         Vector3 convertedX = Camera.main.transform.right*inputX;
         convertedX.y = 0;
@@ -53,5 +46,9 @@ public class PlayerScript : MonoBehaviour
             convertedY *= oldYMagnitude/newYMagnitude;
 
         transform.position += velocity * (convertedX + convertedY) * Time.deltaTime;
+    }
+
+    public void SetPlayerController(PlayerControllerBase p) {
+        playerControllerBase = p;
     }
 }
