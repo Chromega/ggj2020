@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
 
     public Inventory inventory;
 
-    public int speed = 10;
+    public int speed = 20;
     public bool lockMovement = false;
     public bool usingItem = false;
     private Quaternion rotateTo;
