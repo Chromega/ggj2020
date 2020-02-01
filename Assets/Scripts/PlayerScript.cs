@@ -66,7 +66,7 @@ public class PlayerScript : MonoBehaviour
         if (item != null) {
             Debug.Log("Used item " + index);
             Pickupable pickupable = PickupableFactory.Instance.Activate(item);
-            pickupable.gameObject.transform.position = transform.position;
+            pickupable.gameObject.transform.position = transform.position + transform.forward;
             pickupable.BeginDeactivate();
         }
     }
