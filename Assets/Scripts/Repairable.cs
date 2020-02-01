@@ -6,9 +6,13 @@ public class Repairable : MonoBehaviour
 {
     // What is the state of the current object
     public bool _broken = false;
-    public bool broken 
+
+    // What objects can repair this
+    public RepairType repairType;
+
+    public bool broken
     {
-        get 
+        get
         {
             return _broken;
         }
@@ -23,7 +27,7 @@ public class Repairable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -33,7 +37,7 @@ public class Repairable : MonoBehaviour
         {
             mesh.material.color = Color.red;
         }
-        else 
+        else
         {
             mesh.material.color = Color.white;
         }
@@ -46,8 +50,25 @@ public class Repairable : MonoBehaviour
     }
 
     // Set the state of the object to fixed
-    public void Repair()
+    public bool Repair(Item item)
     {
-        _broken = false;
+        if (item.repairType == repairType)
+        {
+            _broken = false;
+            return true;
+        }
+        return false;
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Item item = collision.transform.GetComponent<Item>();
+        if (item != null)
+        {
+            if (Repair(item))
+            {
+                Destroy(item);
+            }
+        }
     }
 }

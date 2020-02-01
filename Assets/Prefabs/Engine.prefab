@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6379011523920070254}
   - component: {fileID: 2504962086117051176}
   - component: {fileID: 4059224724342993011}
+  - component: {fileID: -4457278127722847735}
   m_Layer: 0
   m_Name: TestObject
   m_TagString: Untagged
@@ -94,3 +95,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-4457278127722847735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376476949053182674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bae9e7d2076e4c66905a8a208e85d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _broken: 0
+  repairType: 0
+  mesh: {fileID: 0}

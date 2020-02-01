@@ -7,22 +7,18 @@ public class VoyageManager : MonoBehaviour
     public float distanceProgress = 0f;
 
     // Length of the voyage
-    public float goalDistance = 100.0f;
+    public float goalDistance = 10.0f;
 
     // Is the voyage going right now
     public bool underway = false;
 
     // The ship object with ship state
-    public Ship ship;
+    private Ship ship;
 
-    public void Awake()
-    {
-        ship = GameObject.Find("Ship").GetComponent<Ship>();
-    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        ship = Game.Instance.ship;
     }
 
     // Update is called once per frame
