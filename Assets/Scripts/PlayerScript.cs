@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
 
     public int speed = 50;
     public Vector3 movement;
-    private Quaternion qTo;
+    private Quaternion rotateTo;
 
     private void Awake()
     {
@@ -53,8 +53,8 @@ public class PlayerScript : MonoBehaviour
         movement = convertedX + convertedY;
         transform.position += speed * movement * Time.deltaTime;
         if (movement != Vector3.zero) {
-            qTo = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.Slerp(transform.rotation, qTo, Time.deltaTime * 20);
+            rotateTo = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotateTo, Time.deltaTime * 20);
         }
     }
 
