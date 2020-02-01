@@ -19,4 +19,6 @@ public class Item : ScriptableObject
     public RepairType repairType;
     // Display icon
     public Sprite itemIcon;
+    // The prefab of the object to spawn
+    public GameObject prefab;
 }

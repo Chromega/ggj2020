@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Hammer
   repairType: 0
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 436c5e63723127948af8857e903f658a, type: 3}
+  prefab: {fileID: 5382401377684300978, guid: 3473ab17e0763458badcd4a71c4f4f7c, type: 3}

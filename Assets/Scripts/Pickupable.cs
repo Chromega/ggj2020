@@ -9,6 +9,12 @@ public class Pickupable : MonoBehaviour
 
     public bool collided = false;
 
+    private GameObject model;
+
+    private void Awake()
+    {
+    }
+
     // Pick up items when triggere by player colliders
     public void OnCollisionEnter(Collision collision)
     {
@@ -29,11 +35,13 @@ public class Pickupable : MonoBehaviour
     {
         Reset();
         this.item = item;
+        model = Instantiate(item.prefab, this.transform);
     }
 
     public void Reset()
     {
         item = null;
         collided = false;
+        Destroy(model);
     }
 }
