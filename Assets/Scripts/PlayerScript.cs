@@ -31,7 +31,6 @@ public class PlayerScript : MonoBehaviour
             Vector2 input = playerControllerBase.GetInput();
             if (input.magnitude > 1) {
                 input = input.normalized;
-                Debug.Log(input.magnitude);
             }
             float inputX = input.x;
             float inputY = input.y;
