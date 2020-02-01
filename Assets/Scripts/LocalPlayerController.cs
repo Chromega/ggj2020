@@ -7,6 +7,45 @@ public class LocalPlayerController : PlayerControllerBase
     public string[] inventory;
 
 
+    void Update()
+    {
+        if (playerIdx == 0) {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                triggerItemUsed(0);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                triggerItemUsed(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                triggerItemUsed(2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                triggerItemUsed(3);
+            }
+        } else if (playerIdx == 1) {
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                triggerItemUsed(0);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                triggerItemUsed(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                triggerItemUsed(2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                triggerItemUsed(3);
+            }
+        }
+    }
+
     public override string[] GetInventory()
     {
         return inventory;

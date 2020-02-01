@@ -21,7 +21,7 @@ public class Game : Singleton<Game>
     private void Start()
     {
         UIManager.Instance.player1Inventory.AssignInventory(player1.inventory);
-        //UIManager.Instance.player1Inventory.AssignInventory(player2.inventory);
+        UIManager.Instance.player2Inventory.AssignInventory(player2.inventory);
         //UIManager.Instance.player1Inventory.AssignInventory(player3.inventory);
         //UIManager.Instance.player1Inventory.AssignInventory(player4.inventory);
     }

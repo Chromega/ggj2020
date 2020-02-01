@@ -36,6 +36,7 @@ public class PickupableFactory : Singleton<PickupableFactory>
         Pickupable newObj = Instantiate(pickupablePrefab) as Pickupable;
         newObj.SetItem(item);
         pool.Add(newObj);
+        newObj.transform.parent = transform;
         return newObj;
     }
 
@@ -43,5 +44,20 @@ public class PickupableFactory : Singleton<PickupableFactory>
     {
         p.Reset();
         p.gameObject.SetActive(false);
+    }
+
+    // Returns a full list of all item types
+    // Not deduped so that we weight toward available items
+    public List<RepairType> CurrentAvailableItemRepairTypes()
+    {
+        List<RepairType> types = new List<RepairType>();
+        for (int i = 0; i < pool.Count; i++)
+        {
+            if (pool[i].gameObject.activeSelf)
+            {
+                types.Add(pool[i].item.repairType);
+            }
+        }
+        return types;
     }
 }

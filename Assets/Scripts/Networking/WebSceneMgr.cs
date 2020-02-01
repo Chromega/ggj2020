@@ -19,6 +19,19 @@ public class WebSceneMgr : MonoBehaviour
         if (NetPlayerController.LocalInstance)
         {
             NetPlayerController.LocalInstance.SetInput(new Vector2(joystick.Horizontal, joystick.Vertical));
+
+            // check inventory
+            string[] netInventory = NetPlayerController.LocalInstance.GetInventory();
+            string netInventoryStr = ConvertStringArrayToStringJoin(netInventory);
+            Debug.Log(netInventoryStr);
+
         }
+    }
+
+    public string ConvertStringArrayToStringJoin(string[] array)
+    {
+        // Use string Join to concatenate the string elements.
+        string result = string.Join(".", array);
+        return result;
     }
 }

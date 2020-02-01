@@ -10,6 +10,9 @@ public class Repairable : MonoBehaviour
     // What objects can repair this
     public RepairType repairType;
 
+    public GameObject fixedObject;
+    public GameObject brokenObject;
+
     public bool broken
     {
         get
@@ -18,11 +21,10 @@ public class Repairable : MonoBehaviour
         }
     }
 
-    public MeshRenderer mesh;
-
     private void Awake()
     {
-        mesh = GetComponent<MeshRenderer>();
+        fixedObject.SetActive(true);
+        brokenObject.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
@@ -33,28 +35,36 @@ public class Repairable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (broken)
-        {
-            mesh.material.color = Color.red;
-        }
-        else
-        {
-            mesh.material.color = Color.white;
-        }
+
     }
 
     // Set the state of the object to broken
     public void Break()
     {
         _broken = true;
+        fixedObject.SetActive(false);
+        brokenObject.SetActive(true);
+        List<RepairType> currentAvailableItems = PickupableFactory.Instance.CurrentAvailableItemRepairTypes();
+        int index = Random.Range(0, currentAvailableItems.Count - 1);
+        if (currentAvailableItems.Count > 0)
+        {
+            repairType = currentAvailableItems[index];
+        }
+        else
+        {
+            // Temp handle no items existing
+            repairType = RepairType.Engine;
+        }
     }
 
     // Set the state of the object to fixed
-    public bool Repair(Item item)
+    public bool Repair(Pickupable pickupable)
     {
-        if (item.repairType == repairType)
+        if (pickupable.item.repairType == repairType)
         {
             _broken = false;
+            fixedObject.SetActive(true);
+            brokenObject.SetActive(false);
             return true;
         }
         return false;
@@ -62,12 +72,13 @@ public class Repairable : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        Item item = collision.transform.GetComponent<Item>();
-        if (item != null)
+        Pickupable pickupable = collision.transform.GetComponent<Pickupable>();
+        if (pickupable != null && pickupable.player != null)
         {
-            if (Repair(item))
+            Debug.Log("Pickup collision");
+            if (Repair(pickupable))
             {
-                Destroy(item);
+                pickupable.Consume();
             }
         }
     }

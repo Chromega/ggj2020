@@ -9,7 +9,7 @@ public class NetPlayerController : PlayerControllerBase
     private PhotonView photonView;
 
     public Vector2 input;
-    public string[] inventory;
+    public string[] netInventory;
 
     // Start is called before the first frame update
     void Awake()
@@ -44,8 +44,8 @@ public class NetPlayerController : PlayerControllerBase
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                string[] inventory = { "hammer", "wrench" };
-                SetInventory(inventory);
+                string[] netInventory = { "hammer", "wrench" };
+                SetInventory(netInventory);
             }
         }
     }
@@ -60,15 +60,15 @@ public class NetPlayerController : PlayerControllerBase
     //The host sets the inventory.  Should call this after picking up/using an item.
     //Could make 'add inventory item' and 'remove inventory item' as useful helpers
     //Has to be an array...List<> is unsupported out of the box
-    public override void SetInventory(string[] inventory)
+    public override void SetInventory(string[] netInventory)
     {
-        this.inventory = inventory;
-        photonView.RPC("SetInventoryRpc", RpcTarget.Others, inventory);
+        this.netInventory = netInventory;
+        photonView.RPC("SetInventoryRpc", RpcTarget.Others, netInventory);
     }
 
     public override string[] GetInventory()
     {
-        return inventory;
+        return netInventory;
     }
 
     public override Vector2 GetInput()
@@ -84,9 +84,9 @@ public class NetPlayerController : PlayerControllerBase
     }
 
     [PunRPC]
-    void SetInventoryRpc(string[] inventory)
+    void SetInventoryRpc(string[] netInventory)
     {
-        this.inventory = inventory;
-        Debug.Log("Inventory is " + inventory.Length + " items");
+        this.netInventory = netInventory;
+        Debug.Log("Inventory is " + netInventory.Length + " items");
     }
 }
