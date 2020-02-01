@@ -98,7 +98,7 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
 #else
         // list current rooms
         int maxRoom = 0;
-        string maxRoomString = "";
+        string maxRoomString = "0";
         Debug.Log("Current rooms open:");
         foreach (RoomInfo info in roomList)
         {
