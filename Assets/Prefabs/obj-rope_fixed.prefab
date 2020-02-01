@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6850238029901101678}
+  - component: {fileID: 2821259585167872012}
   m_Layer: 0
   m_Name: obj-rope_fixed
   m_TagString: Untagged
@@ -62,6 +63,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2821259585167872012
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6850238029901101679}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8952391384531103626
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,6 +90,7 @@ GameObject:
   - component: {fileID: 8215836968501783356}
   - component: {fileID: 8666127150494449647}
   - component: {fileID: 101021424328348447}
+  - component: {fileID: 6677869006660854651}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -141,3 +159,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6677869006660854651
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952391384531103626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: d1fc1378cfacc416ba4110393105b812, type: 3}
