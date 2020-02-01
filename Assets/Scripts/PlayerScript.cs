@@ -27,7 +27,7 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         // check for movement input
-        if (!lockMovement) {
+        if (!lockMovement && playerControllerBase) {
             Vector2 input = playerControllerBase.GetInput();
             float inputX = input.x;
             float inputY = input.y;

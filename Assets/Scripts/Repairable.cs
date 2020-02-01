@@ -53,7 +53,7 @@ public class Repairable : MonoBehaviour
         else
         {
             // Temp handle no items existing
-            repairType = RepairType.Engine;
+            repairType = RepairType.Tape;
         }
     }
 

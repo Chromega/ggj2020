@@ -4,7 +4,7 @@
 o steering-wheel-broken
 
 # material
-mtllib obj-0-steering-wheel-broken.mtl
+mtllib obj-1-steering-wheel-broken.mtl
 usemtl palette
 
 # normals

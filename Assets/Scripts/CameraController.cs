@@ -16,6 +16,6 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         // Follow the ship
-        transform.position = new Vector3(ship.transform.position.x - 7, 10, -7);
+        transform.position = new Vector3(ship.transform.position.x + 8, 6, 6.5f);
     }
 }
