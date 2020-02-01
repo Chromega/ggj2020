@@ -401,6 +401,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj-steeringwheel_fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 496749965765229940, guid: 1ce1ea6a70826419e857f8ba2b6dc0aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 496749965765229943, guid: 1ce1ea6a70826419e857f8ba2b6dc0aa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -525,6 +530,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj-rail3_fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 1612333749570013167, guid: 4554d77ae8da44aeb8771ab7ab7cbcb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4554d77ae8da44aeb8771ab7ab7cbcb8, type: 3}
 --- !u!1001 &2216480355941046736
@@ -538,6 +548,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: obj-deck1_fixed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216480356072854479, guid: 6d214f70dafde4cc785becba3ab4461a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2216480356072854512, guid: 6d214f70dafde4cc785becba3ab4461a,
         type: 3}
@@ -608,6 +623,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: char-pig_fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 2385544929174691134, guid: c3eb17d577f54412dab1c849adb6888d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2385544929174691135, guid: c3eb17d577f54412dab1c849adb6888d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -676,6 +696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: obj-barrel_fixed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613819007246405828, guid: e212ba35a86fb4388b0c17d64de03425,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2613819007246405831, guid: e212ba35a86fb4388b0c17d64de03425,
         type: 3}
@@ -801,6 +826,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj-grate3_fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 3208944472288416440, guid: af4088c1bb7a04f8589233929b467b2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4088c1bb7a04f8589233929b467b2f, type: 3}
 --- !u!1001 &3343279025659899400
@@ -814,6 +844,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: obj-cannon_fixed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3343279024314279051, guid: 914e7b53494144e5d87ac82ab3a87807,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3343279024314279052, guid: 914e7b53494144e5d87ac82ab3a87807,
         type: 3}
@@ -973,6 +1008,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj-grate1_fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 4667727230790246777, guid: 135ff7bdf4639460da83e9341f08f85a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4667727230790246782, guid: 135ff7bdf4639460da83e9341f08f85a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1042,6 +1082,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj-hammer_fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 5382401377684300978, guid: 3473ab17e0763458badcd4a71c4f4f7c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5382401377684300979, guid: 3473ab17e0763458badcd4a71c4f4f7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1110,6 +1155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: obj-grate2_fixed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639017165916271420, guid: a7a72b82b3a7b4d2ab615d19d4c2f972,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639017165916271421, guid: a7a72b82b3a7b4d2ab615d19d4c2f972,
         type: 3}
@@ -1235,6 +1285,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj-grate4_fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 5859940386091426414, guid: 840b1f783d1a747f5a51029d50426315,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 840b1f783d1a747f5a51029d50426315, type: 3}
 --- !u!1001 &6297615472997453508
@@ -1303,6 +1358,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: obj-crate_fixed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297615474566432759, guid: 3c04ae6bc6b36409d8caeef2feb349b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c04ae6bc6b36409d8caeef2feb349b3, type: 3}
@@ -1373,6 +1433,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: char-deer_fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 6298498608786540932, guid: 784304c57bd8e4f44b857eca5a4f63e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 784304c57bd8e4f44b857eca5a4f63e4, type: 3}
 --- !u!1001 &6850238029198206893
@@ -1442,6 +1507,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj-rope_fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 6850238029901101679, guid: 2137931c7c1774ab783b6bb8c5716bda,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2137931c7c1774ab783b6bb8c5716bda, type: 3}
 --- !u!1001 &7058153852025795706
@@ -1455,6 +1525,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: obj-lifepreserver_fixed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058153851100996224, guid: 9b85fa0be856c42f58e89604152dae48,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7058153851100996225, guid: 9b85fa0be856c42f58e89604152dae48,
         type: 3}
@@ -1580,6 +1655,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj-rail1_fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 7812618254695727498, guid: ad8d366a029bb4e4ca9195de47badecc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8d366a029bb4e4ca9195de47badecc, type: 3}
 --- !u!1001 &8966547341997109225
@@ -1648,6 +1728,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: obj-rail2_fixed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966547340241518719, guid: f63f0c2faedca45a8be08b5b1ba58cf9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63f0c2faedca45a8be08b5b1ba58cf9, type: 3}
