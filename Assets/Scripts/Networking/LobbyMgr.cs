@@ -11,10 +11,24 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
 
     private Dictionary<string, RoomInfo> cachedRoomList;
 
+    public Canvas clientLobbyCanvas;
+
+    public UnityEngine.UI.Button roomButtonPrefab;
+    public Transform roomButtonList;
+    public Camera lobbyCamera;
+
     void Awake()
     {
         Instance = this;
         cachedRoomList = new Dictionary<string, RoomInfo>();
+
+        roomButtonPrefab.gameObject.SetActive(false);
+
+#if UNITY_STANDALONE
+        clientLobbyCanvas.gameObject.SetActive(false);
+#else
+        clientLobbyCanvas.gameObject.SetActive(true);
+#endif
     }
 
     // Start is called before the first frame update
@@ -45,17 +59,18 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-      #if UNITY_STANDALONE
+#if UNITY_STANDALONE
               // generate the current time
               System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
               int currTime = (int)(System.DateTime.UtcNow - epochStart).TotalSeconds;
               string currTimeStr = currTime.ToString();
-              string roomName = currTimeStr;
+        //string roomName = currTimeStr;
+        string roomName = SystemInfo.deviceName + currTimeStr;
 
               Debug.Log("Creating room "+roomName);
               RoomOptions options = new RoomOptions { MaxPlayers = 4 };
               PhotonNetwork.CreateRoom(roomName, options, null);
-      #endif
+#endif
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -78,12 +93,14 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Joined room!");
+        clientLobbyCanvas.gameObject.SetActive(false);
 #if UNITY_STANDALONE
         //UnityEngine.SceneManagement.SceneManager.LoadScene("TestHost", UnityEngine.SceneManagement.LoadSceneMode.Additive);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 #else
         UnityEngine.SceneManagement.SceneManager.LoadScene("PhoneScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 #endif
+        lobbyCamera.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -97,8 +114,8 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
 #if UNITY_STANDALONE
 #else
         // list current rooms
-        int maxRoom = 0;
-        string maxRoomString = "0";
+        /*int maxRoom = 0;
+        string maxRoomString = "";
         Debug.Log("Current rooms open:");
         foreach (RoomInfo info in roomList)
         {
@@ -109,10 +126,26 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
             }
             Debug.Log(info.Name);
         }
-        Debug.Log("biggest room "+maxRoom.ToString());
+        Debug.Log("biggest room "+maxRoom.ToString());*/
 
         //PhotonNetwork.JoinRandomRoom();
-        PhotonNetwork.JoinRoom(maxRoomString);
+        //PhotonNetwork.JoinRoom(maxRoomString);
+        
+        for (int i = 0; i < roomButtonList.childCount; ++i)
+        {
+            if (roomButtonList.GetChild(i).gameObject == roomButtonPrefab.gameObject)
+                continue;
+            Destroy(roomButtonList.GetChild(i).gameObject);
+        }
+        foreach (RoomInfo info in roomList)
+        {
+            string roomName = info.Name;
+            UnityEngine.UI.Button button = Instantiate(roomButtonPrefab);
+            button.gameObject.SetActive(true);
+            button.transform.SetParent(roomButtonList);
+            button.GetComponentInChildren<UnityEngine.UI.Text>().text = roomName;
+            button.onClick.AddListener(() => { PhotonNetwork.JoinRoom(roomName); });
+        }
 #endif
     }
 }
