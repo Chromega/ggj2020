@@ -53,9 +53,9 @@ public class Repairable : MonoBehaviour
     }
 
     // Set the state of the object to fixed
-    public bool Repair(Item item)
+    public bool Repair(Pickupable pickupable)
     {
-        if (item.repairType == repairType)
+        if (pickupable.item.repairType == repairType)
         {
             _broken = false;
             return true;
@@ -65,12 +65,12 @@ public class Repairable : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        Item item = collision.transform.GetComponent<Item>();
-        if (item != null)
+        Pickupable pickupable = collision.transform.GetComponent<Pickupable>();
+        if (pickupable != null)
         {
-            if (Repair(item))
+            if (Repair(pickupable))
             {
-                Destroy(item);
+                pickupable.Consume();
             }
         }
     }

@@ -31,6 +31,22 @@ public class Pickupable : MonoBehaviour
         this.item = item;
     }
 
+    public void Consume()
+    {
+
+    }
+
+    IEnumerator Deactivate()
+    {
+        yield return new WaitForSeconds(1f);
+        PickupableFactory.Instance.Deactivate(this);
+    }
+
+    public void BeginDeactivate()
+    {
+        StartCoroutine("Deactivate");
+    }
+
     public void Reset()
     {
         item = null;

@@ -19,4 +19,6 @@ public class Item : ScriptableObject
     public RepairType repairType;
     // Display icon
     public Sprite itemIcon;
+    //
+    public GameObject itemModel;
 }

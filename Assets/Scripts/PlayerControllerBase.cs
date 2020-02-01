@@ -7,6 +7,16 @@ public abstract class PlayerControllerBase : MonoBehaviour
     //Not currently synched to net controller
     protected int playerIdx;
 
+    public event System.Action<int> onItemUsed;
+    public event System.Action<int> onItemDropped;
+
+    protected void triggerItemUsed(int index) {
+        onItemUsed?.Invoke(index);
+    }
+    protected void triggerItemDropped(int index) {
+        onItemDropped?.Invoke(index);
+    }
+
     public virtual void SetPlayerIndex(int idx)
     {
         playerIdx = idx;
