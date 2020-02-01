@@ -1103,6 +1103,11 @@ PrefabInstance:
       propertyPath: player1
       value: 
       objectReference: {fileID: 1230637041}
+    - target: {fileID: 5985484629322307117, guid: a8a09381069334dc5a2d279743546b24,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 999693931}
     - target: {fileID: 5985484629322307118, guid: a8a09381069334dc5a2d279743546b24,
         type: 3}
       propertyPath: ship
