@@ -73,8 +73,8 @@ public class Ship : MonoBehaviour
     // Break down something random!
     public void BreakDownRandomly()
     {
-        int system = Random.Range(0, allRepairables.Count - 1);
-        allRepairables[system][Random.Range(0, allRepairables[system].Count - 1)].Break();
+        int system = Random.Range(0, allRepairables.Count);
+        allRepairables[system][Random.Range(0, allRepairables[system].Count)].Break();
     }
 
     public void Reset()
