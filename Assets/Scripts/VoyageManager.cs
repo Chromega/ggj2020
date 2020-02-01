@@ -29,6 +29,10 @@ public class VoyageManager : MonoBehaviour
             float speed = ship.GetMovementSpeed();
             distanceProgress += speed * Time.deltaTime;
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ship.BreakDownRandomly();
+        }
     }
 
     public float GetCurrentProgress()

@@ -13,12 +13,19 @@ public class Ship : MonoBehaviour
     // Each engine object on the ship
     public List<Repairable> engines;
 
+    // Each engine object on the ship
+    public List<Repairable> steering;
+
+    public List<List<Repairable>> allRepairables;
     public bool sailing = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        allRepairables = new List<List<Repairable>>();
+        // Right now just manually add each of the repairable categories
+        allRepairables.Add(engines);
+        allRepairables.Add(steering);
     }
 
     // Update is called once per frame
@@ -26,7 +33,7 @@ public class Ship : MonoBehaviour
     {
         if (sailing)
         {
-            transform.position += new Vector3(GetMovementSpeed(), 0f, 0f); 
+            transform.position += new Vector3(GetMovementSpeed(), 0f, 0f);
         }
     }
 
@@ -54,6 +61,13 @@ public class Ship : MonoBehaviour
     public void StopSailing()
     {
         sailing = false;
+    }
+
+    // Break down something random!
+    public void BreakDownRandomly()
+    {
+        int system = Random.Range(0, allRepairables.Count - 1);
+        allRepairables[system][Random.Range(0, allRepairables[system].Count - 1)].Break();
     }
 
     public void Reset()
