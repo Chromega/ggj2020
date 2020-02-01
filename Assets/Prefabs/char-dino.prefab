@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 0
   playerControllerBase: {fileID: 0}
-  speed: 20
+  speed: 5
   lockMovement: 0
   usingItem: 0
 --- !u!136 &6584951013638747764
