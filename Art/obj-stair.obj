@@ -4,7 +4,7 @@
 o stair
 
 # material
-mtllib obj-2-stair.mtl
+mtllib obj-3-stair.mtl
 usemtl palette
 
 # normals

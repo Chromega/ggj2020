@@ -8,6 +8,7 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI progressText;
 
     public UIInventory player1Inventory;
+    public UIInventory player2Inventory;
 
     // Start is called before the first frame update
     void Start()

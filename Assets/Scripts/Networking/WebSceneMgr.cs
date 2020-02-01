@@ -23,7 +23,7 @@ public class WebSceneMgr : MonoBehaviour
             // check inventory
             string[] netInventory = NetPlayerController.LocalInstance.GetInventory();
             string netInventoryStr = ConvertStringArrayToStringJoin(netInventory);
-            Debug.Log(netInventoryStr);
+            //Debug.Log(netInventoryStr);
 
         }
     }

@@ -4,7 +4,7 @@
 o dino-right-arm
 
 # material
-mtllib char-0-dino-right-arm.mtl
+mtllib char-3-dino-right-arm.mtl
 usemtl palette
 
 # normals

@@ -10,15 +10,29 @@ public class Ship : MonoBehaviour
     // Movement penalty per engine
     public float movementSpeedPenalty = 0.2f;
 
-    // Each engine object on the ship
-    public List<Repairable> engines;
+    // Each speed object on the ship
+    public List<Repairable> speedComponents;
 
+    // Each steering object on the ship
+    public List<Repairable> steeringComponents;
+
+    // Each hull object on the ship
+    public List<Repairable> hullComponents;
+    // Each battle object on the ship
+    public List<Repairable> battleComponents;
+
+    public List<List<Repairable>> allRepairables;
     public bool sailing = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        allRepairables = new List<List<Repairable>>();
+        // Right now just manually add each of the repairable categories
+        allRepairables.Add(speedComponents);
+        allRepairables.Add(steeringComponents);
+        allRepairables.Add(hullComponents);
+        allRepairables.Add(battleComponents);
     }
 
     // Update is called once per frame
@@ -26,7 +40,7 @@ public class Ship : MonoBehaviour
     {
         if (sailing)
         {
-            transform.position += new Vector3(GetMovementSpeed(), 0f, 0f); 
+            transform.position += new Vector3(GetMovementSpeed(), 0f, 0f);
         }
     }
 
@@ -34,7 +48,7 @@ public class Ship : MonoBehaviour
     {
         float movementSpeed = baseMovementSpeed;
         // Each broken engine reduces speed by 20% multiplicatively
-        foreach (Repairable engine in engines)
+        foreach (Repairable engine in speedComponents)
         {
             if (engine.broken)
             {
@@ -54,6 +68,13 @@ public class Ship : MonoBehaviour
     public void StopSailing()
     {
         sailing = false;
+    }
+
+    // Break down something random!
+    public void BreakDownRandomly()
+    {
+        int system = Random.Range(0, allRepairables.Count - 1);
+        allRepairables[system][Random.Range(0, allRepairables[system].Count - 1)].Break();
     }
 
     public void Reset()
