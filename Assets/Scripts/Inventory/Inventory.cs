@@ -64,4 +64,18 @@ public class Inventory
     public bool Use(int index) {
         return true;
     }
+
+    // Total number of items owned by player
+    public int NumItems()
+    {
+        int total = 0;
+        for (var i = 0; i < items.Length; i++)
+        {
+            if (items[i] != null)
+            {
+                total++;
+            }
+        }
+        return total;
+    }
 }

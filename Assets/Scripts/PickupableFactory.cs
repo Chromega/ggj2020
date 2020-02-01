@@ -60,4 +60,17 @@ public class PickupableFactory : Singleton<PickupableFactory>
         }
         return types;
     }
+
+    public int TotalActiveItems()
+    {
+        int total = 0;
+        for (int i = 0; i < pool.Count; i++)
+        {
+            if (pool[i].gameObject.activeSelf)
+            {
+                total++;
+            }
+        }
+        return total;
+    }
 }
