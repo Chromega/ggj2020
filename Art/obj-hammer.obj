@@ -4,7 +4,7 @@
 o hammer
 
 # material
-mtllib obj-3-hammer.mtl
+mtllib obj-4-hammer.mtl
 usemtl palette
 
 # normals

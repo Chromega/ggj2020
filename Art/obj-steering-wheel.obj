@@ -4,7 +4,7 @@
 o steering-wheel
 
 # material
-mtllib obj-4-steering-wheel.mtl
+mtllib obj-5-steering-wheel.mtl
 usemtl palette
 
 # normals
