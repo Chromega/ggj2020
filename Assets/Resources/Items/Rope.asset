@@ -15,4 +15,4 @@ MonoBehaviour:
   displayName: Rope
   repairType: 2
   itemIcon: {fileID: 21300000, guid: bd293dc32f4aaf94e8274f2fac2cdf89, type: 3}
-  prefab: {fileID: -927199367670048503, guid: d1fc1378cfacc416ba4110393105b812, type: 3}
+  prefab: {fileID: 6850238029901101679, guid: 2137931c7c1774ab783b6bb8c5716bda, type: 3}
