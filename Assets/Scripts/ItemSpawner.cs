@@ -65,7 +65,7 @@ public class ItemSpawner : MonoBehaviour
 
     public Item PickRandomItem()
     {
-        int roll = Random.Range(0, items.Count - 1);
+        int roll = Random.Range(0, items.Count);
         return items[roll];
     }
 

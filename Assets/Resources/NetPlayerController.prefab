@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {x: 0, y: 0}
-  inventory: []
+  netInventory: []
 --- !u!114 &1052438321528187655
 MonoBehaviour:
   m_ObjectHideFlags: 0
