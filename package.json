@@ -1,0 +1,21 @@
+{
+  "name": "ggj2020",
+  "version": "0.0.1",
+  "description": "Global Game Jam 2020",
+  "engines": {
+    "node": "12.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node node/index.js"
+  },
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.17.1",
+    "node-static": "^0.7.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seanyliu/ggj2020"
+  }
+}
