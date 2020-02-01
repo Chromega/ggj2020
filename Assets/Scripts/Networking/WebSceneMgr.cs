@@ -10,33 +10,40 @@ public class WebSceneMgr : MonoBehaviour
     public Canvas uiCanvas;
     public GameObject buttonPrefab;
     public GameObject panelToAttach;
+    public List<GameObject> buttonList = new List<GameObject>();
+    string[] inv;
 
     // Start is called before the first frame update
     void Start()
     {
         PhotonNetwork.Instantiate("NetPlayerController", Vector3.zero, Quaternion.identity, 0) ;
+    }
 
+    public void updateInventoryButtons(string[] inv)
+    {
+      // instantiate enough buttons
+      for (var i = buttonList.Count; i < inv.Length; i++)
+      {
+        GameObject button = (GameObject) Instantiate( buttonPrefab ) ;
+        button.transform.position = panelToAttach.transform.position;
+        Vector3 currentPos = button.transform.position;
+        currentPos.y += i*50;
+        button.transform.position = currentPos;
+        button.GetComponent<RectTransform>().SetParent(panelToAttach.transform);
+        int buttonIdx = i;
+        //button.onClick.addListener(() => { Debug.log(buttonIdx); });
+        buttonList.Add(button);
+      }
 
-        string[] inv = new string[4];
-        inv[0] = "hammer";
-        inv[1] = "hammer2";
-        inv[2] = "hammer3";
-        inv[3] = "hammer4";
-
-        for (var i = 0; i < inv.Length; i++)
-        {
-          // Instantiate (clone) the prefab
-          GameObject button = (GameObject) Instantiate( buttonPrefab ) ;
-          button.transform.position = panelToAttach.transform.position;
-          Vector3 currentPos = button.transform.position;
-          currentPos.y += i*100;
-          button.transform.position = currentPos;
-          button.GetComponent<RectTransform>().SetParent(panelToAttach.transform);
-          button.GetComponentInChildren<TextMeshProUGUI>().text = inv[i];
-        }
-
+      for (var i = 0; i < inv.Length; i++)
+      {
+        GameObject button = buttonList[i];
+        button.GetComponentInChildren<TextMeshProUGUI>().text = inv[i];
+      }
 
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -49,6 +56,7 @@ public class WebSceneMgr : MonoBehaviour
             string[] netInventory = NetPlayerController.LocalInstance.GetInventory();
             string netInventoryStr = ConvertStringArrayToStringJoin(netInventory);
             //Debug.Log(netInventoryStr);
+            updateInventoryButtons(netInventory);
         }
     }
 

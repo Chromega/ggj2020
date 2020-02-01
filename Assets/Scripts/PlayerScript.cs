@@ -80,9 +80,7 @@ public class PlayerScript : MonoBehaviour
                 pickupable.player = this;
                 pickupable.playerInventorySlot = index;
                 pickupable.transform.parent = transform;
-                pickupable.transform.localPosition = new Vector3(0, 0, 1);
-                IEnumerator coroutine = pickupable.Deactivate(this.OnItemDeactivated);
-                StartCoroutine(coroutine);
+                pickupable.Deactivate(this.OnItemDeactivated);
             }
         }
     }
