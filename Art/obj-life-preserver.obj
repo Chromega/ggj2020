@@ -4,7 +4,7 @@
 o life-preserver
 
 # material
-mtllib obj-3-life-preserver.mtl
+mtllib obj-6-life-preserver.mtl
 usemtl palette
 
 # normals

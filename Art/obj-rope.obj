@@ -4,7 +4,7 @@
 o rope
 
 # material
-mtllib obj-2-rope.mtl
+mtllib obj-5-rope.mtl
 usemtl palette
 
 # normals
