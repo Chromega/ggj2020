@@ -31,7 +31,7 @@ public class WebSceneMgr : MonoBehaviour
         button.transform.position = currentPos;
         button.GetComponent<RectTransform>().SetParent(panelToAttach.transform);
         int buttonIdx = i;
-        button.onClick.addListener(() => { Debug.log(buttonIdx); });
+        //button.onClick.addListener(() => { Debug.log(buttonIdx); });
         buttonList.Add(button);
       }
 
