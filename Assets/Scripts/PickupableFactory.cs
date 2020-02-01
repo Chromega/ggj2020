@@ -36,6 +36,7 @@ public class PickupableFactory : Singleton<PickupableFactory>
         Pickupable newObj = Instantiate(pickupablePrefab) as Pickupable;
         newObj.SetItem(item);
         pool.Add(newObj);
+        newObj.transform.parent = transform;
         return newObj;
     }
 
