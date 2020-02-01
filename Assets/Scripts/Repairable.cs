@@ -47,6 +47,9 @@ public class Repairable : MonoBehaviour
     public void Break()
     {
         _broken = true;
+        List<RepairType> currentAvailableItems = PickupableFactory.Instance.CurrentAvailableItemRepairTypes();
+        int index = Random.Range(0, currentAvailableItems.Count - 1);
+        repairType = currentAvailableItems[index];
     }
 
     // Set the state of the object to fixed
