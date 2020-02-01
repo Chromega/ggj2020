@@ -10,11 +10,16 @@ public class Ship : MonoBehaviour
     // Movement penalty per engine
     public float movementSpeedPenalty = 0.2f;
 
-    // Each engine object on the ship
-    public List<Repairable> engines;
+    // Each speed object on the ship
+    public List<Repairable> speedComponents;
 
-    // Each engine object on the ship
-    public List<Repairable> steering;
+    // Each steering object on the ship
+    public List<Repairable> steeringComponents;
+
+    // Each hull object on the ship
+    public List<Repairable> hullComponents;
+    // Each battle object on the ship
+    public List<Repairable> battleComponents;
 
     public List<List<Repairable>> allRepairables;
     public bool sailing = false;
@@ -24,8 +29,10 @@ public class Ship : MonoBehaviour
     {
         allRepairables = new List<List<Repairable>>();
         // Right now just manually add each of the repairable categories
-        allRepairables.Add(engines);
-        allRepairables.Add(steering);
+        allRepairables.Add(speedComponents);
+        allRepairables.Add(steeringComponents);
+        allRepairables.Add(hullComponents);
+        allRepairables.Add(battleComponents);
     }
 
     // Update is called once per frame
@@ -41,7 +48,7 @@ public class Ship : MonoBehaviour
     {
         float movementSpeed = baseMovementSpeed;
         // Each broken engine reduces speed by 20% multiplicatively
-        foreach (Repairable engine in engines)
+        foreach (Repairable engine in speedComponents)
         {
             if (engine.broken)
             {
