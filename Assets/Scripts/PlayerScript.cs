@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-
+    public Inventory inventory;
     public Vector2 velocity = new Vector2(50, 50);
     public Vector2 movement;
     private Collider myCollider;
 
+    private void Awake()
+    {
+        inventory = new Inventory();
+    }
     // Start is called before the first frame update
     void Start()
     {

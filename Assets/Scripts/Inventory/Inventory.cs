@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
-    public Item[] items;
+    public Item[] items = new Item[SIZE];
 
     public int size
     {
@@ -14,10 +14,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        items = new Item[4];
-    }
+    const int SIZE = 4;
 
     // Remove an item from the inventory and return it
     public Item GetItem(int index)

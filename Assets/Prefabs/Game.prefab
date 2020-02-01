@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5985484629322307116}
   - component: {fileID: 5985484629322307117}
   - component: {fileID: 5985484629322307118}
+  - component: {fileID: 891731584411091232}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -45,6 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voyage: {fileID: 5985484629322307118}
+  ship: {fileID: 0}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player3: {fileID: 0}
+  player4: {fileID: 0}
 --- !u!114 &5985484629322307118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,4 +66,17 @@ MonoBehaviour:
   distanceProgress: 0
   goalDistance: 600
   underway: 0
-  ship: {fileID: 0}
+--- !u!114 &891731584411091232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5985484629322307119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be92c73d9652b48b4a70dc8c5f217fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupablePrefab: {fileID: 6964101134394727630, guid: 7c741cfc30bcd44a7ac52d640ecc8faa,
+    type: 3}
