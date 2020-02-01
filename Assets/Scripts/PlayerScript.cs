@@ -67,13 +67,15 @@ public class PlayerScript : MonoBehaviour
 
     public void UseItem(int index) {
         if (!usingItem) {
-            usingItem = true;
-            lockMovement = true;
             Item item = inventory.items[index];
             if (item != null) {
+                usingItem = true;
+                lockMovement = true;
                 Debug.Log("Used item " + index);
                 Pickupable pickupable = PickupableFactory.Instance.Activate(item);
                 pickupable.DisablePhysics();
+                pickupable.player = this;
+                pickupable.playerInventorySlot = index;
                 pickupable.transform.parent = transform;
                 pickupable.transform.localPosition = new Vector3(0, 0, 1);
                 IEnumerator coroutine = pickupable.Deactivate(this.OnItemDeactivated);

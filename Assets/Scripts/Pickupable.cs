@@ -6,6 +6,8 @@ public class Pickupable : MonoBehaviour
 {
     // The scriptable object reference
     public Item item;
+    public PlayerScript player;
+    public int playerInventorySlot = -1;
 
     public bool collided = false;
     public float deactivationTime = 0.25f;
@@ -53,7 +55,11 @@ public class Pickupable : MonoBehaviour
 
     public void Consume()
     {
-
+        if (player != null) {
+            player.inventory.GetItem(playerInventorySlot);
+        }
+        player = null;
+        playerInventorySlot = -1;
     }
 
     public IEnumerator Deactivate(System.Action callback)
@@ -69,6 +75,9 @@ public class Pickupable : MonoBehaviour
     {
         item = null;
         collided = false;
+        player = null;
+        playerInventorySlot = -1;
+        EnablePhysics();
         Destroy(model);
     }
 }

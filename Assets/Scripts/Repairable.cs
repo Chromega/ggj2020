@@ -73,7 +73,7 @@ public class Repairable : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         Pickupable pickupable = collision.transform.GetComponent<Pickupable>();
-        if (pickupable != null)
+        if (pickupable != null && pickupable.player != null)
         {
             Debug.Log("Pickup collision");
             if (Repair(pickupable))
