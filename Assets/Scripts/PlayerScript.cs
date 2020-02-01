@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
 
     public Inventory inventory;
 
-    public int speed = 20;
+    public int speed = 10;
     public bool lockMovement = false;
     public bool usingItem = false;
     private Quaternion rotateTo;
@@ -29,6 +29,9 @@ public class PlayerScript : MonoBehaviour
         // check for movement input
         if (!lockMovement && playerControllerBase) {
             Vector2 input = playerControllerBase.GetInput();
+            if (input.magnitude > 1) {
+                input = input.normalized;
+            }
             float inputX = input.x;
             float inputY = input.y;
 

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public enum RepairType
 {
-    Engine,
-    Floor,
-    Mast,
-    Rudder,
+    Hammer,
+    Tape,
+    Rope,
 }
 
 [CreateAssetMenu(menuName = "Items/Item")]

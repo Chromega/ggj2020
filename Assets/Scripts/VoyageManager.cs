@@ -14,15 +14,17 @@ public class VoyageManager : MonoBehaviour
 
     // The ship object with ship state
     private Ship ship;
+    private ItemSpawner itemSpawner;
 
     private float timeToNextBreakage;
 
     const float MIN_SECONDS_BETWEEN_BREAKS = 0.5f;
-    const float MAX_SECONDS_BETWEEN_BREAKS = 20.0f;
+    const float MAX_SECONDS_BETWEEN_BREAKS = 3.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        itemSpawner = GetComponent<ItemSpawner>();
         ship = Game.Instance.ship;
     }
 
@@ -36,11 +38,13 @@ public class VoyageManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
+            itemSpawner.SpawnRandomItem();
             ship.BreakDownRandomly();
         }
         timeToNextBreakage = Mathf.Max(timeToNextBreakage - Time.deltaTime, 0f);
         if (timeToNextBreakage == 0)
         {
+            itemSpawner.SpawnRandomItem();
             ship.BreakDownRandomly();
             SetRandomTimeToBreakage();
         }
