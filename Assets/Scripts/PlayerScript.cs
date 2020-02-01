@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public Inventory inventory;
-    public Vector2 velocity = new Vector2(50, 50);
+    public int velocity = 50;
     public Vector2 movement;
     public int playerNum;
     private Collider myCollider;
@@ -33,6 +33,25 @@ public class PlayerScript : MonoBehaviour
             inputY = Input.GetAxis("P2_Vertical");
         }
 
-        transform.position += new Vector3(velocity.x * inputX, 0, velocity.y * inputY) * Time.deltaTime;
+        Vector3 convertedX = Camera.main.transform.right*inputX;
+        convertedX.y = 0;
+        float oldXMagnitude = Mathf.Abs(inputX);
+        float newXMagnitude = convertedX.magnitude;
+        if (newXMagnitude == 0)
+            convertedX = Vector3.zero;
+        else
+            convertedX *= oldXMagnitude/newXMagnitude;
+
+
+        Vector3 convertedY = Camera.main.transform.up*inputY;
+        convertedY.y = 0;
+        float oldYMagnitude = Mathf.Abs(inputY);
+        float newYMagnitude = convertedY.magnitude;
+        if (newYMagnitude == 0)
+            convertedY = Vector3.zero;
+        else
+            convertedY *= oldYMagnitude/newYMagnitude;
+
+        transform.position += velocity * (convertedX + convertedY) * Time.deltaTime;
     }
 }
