@@ -73,6 +73,7 @@ public class PlayerScript : MonoBehaviour
 
     public void SetPlayerController(PlayerControllerBase p) {
         playerControllerBase = p;
+        inventory.player = p;
         p.onItemUsed += this.UseItem;
     }
 }
