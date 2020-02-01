@@ -7,6 +7,14 @@ public class LocalPlayerController : PlayerControllerBase
     public string[] inventory;
 
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            triggerItemUsed(0);
+        }
+    }
+
     public override string[] GetInventory()
     {
         return inventory;

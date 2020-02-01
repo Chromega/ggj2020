@@ -10,7 +10,6 @@ public class PlayerScript : MonoBehaviour
     public Inventory inventory;
 
     public int speed = 50;
-    public Vector3 movement;
     private Quaternion rotateTo;
 
     private void Awake()
@@ -25,6 +24,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // check for movement input
         Vector2 input = playerControllerBase.GetInput();
         float inputX = input.x;
         float inputY = input.y;
@@ -50,7 +50,10 @@ public class PlayerScript : MonoBehaviour
             convertedY *= oldYMagnitude / newYMagnitude;
         }
 
-        movement = convertedX + convertedY;
+        this.Move(convertedX + convertedY);
+    }
+
+    public void Move(Vector3 movement) {
         transform.position += speed * movement * Time.deltaTime;
         if (movement != Vector3.zero) {
             rotateTo = Quaternion.LookRotation(movement);
@@ -58,7 +61,18 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void UseItem(int index) {
+        Item item = inventory.items[index];
+        if (item != null) {
+            Debug.Log("Used item " + index);
+            Pickupable pickupable = PickupableFactory.Instance.Activate(item);
+            pickupable.gameObject.transform.position = transform.position;
+            pickupable.BeginDeactivate();
+        }
+    }
+
     public void SetPlayerController(PlayerControllerBase p) {
         playerControllerBase = p;
+        p.onItemUsed += this.UseItem;
     }
 }

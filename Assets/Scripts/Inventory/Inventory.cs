@@ -37,4 +37,9 @@ public class Inventory
         }
         return false;
     }
+
+    // Use an item. Returns whether successful or not
+    public bool Use(int index) {
+        return true;
+    }
 }
