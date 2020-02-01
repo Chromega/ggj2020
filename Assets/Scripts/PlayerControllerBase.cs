@@ -5,11 +5,11 @@ using UnityEngine;
 public abstract class PlayerControllerBase : MonoBehaviour
 {
     //Not currently synched to net controller
-    protected int playerIndex;
+    protected int playerIdx;
 
     public virtual void SetPlayerIndex(int idx)
     {
-        playerIndex = idx;
+        playerIdx = idx;
     }
 
     //The client sets position from the UI here!

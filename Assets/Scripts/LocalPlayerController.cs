@@ -15,7 +15,16 @@ public class LocalPlayerController : PlayerControllerBase
     public override Vector2 GetInput()
     {
         //could switch off of playerIdx property
-        return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        float inputX = 0;
+        float inputY = 0;
+        if (playerIdx == 0) {
+            inputX = Input.GetAxis("P1_Horizontal");
+            inputY = Input.GetAxis("P1_Vertical");
+        } else if (playerIdx == 1) {
+            inputX = Input.GetAxis("P2_Horizontal");
+            inputY = Input.GetAxis("P2_Vertical");
+        }
+        return new Vector2(inputX, inputY);
     }
 
     public override void SetInput(Vector2 pos)
