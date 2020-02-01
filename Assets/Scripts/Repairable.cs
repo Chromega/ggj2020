@@ -75,6 +75,7 @@ public class Repairable : MonoBehaviour
         Pickupable pickupable = collision.transform.GetComponent<Pickupable>();
         if (pickupable != null)
         {
+            Debug.Log("Pickup collision");
             if (Repair(pickupable))
             {
                 pickupable.Consume();

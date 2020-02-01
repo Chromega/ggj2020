@@ -9,7 +9,9 @@ public class PlayerScript : MonoBehaviour
 
     public Inventory inventory;
 
-    public int speed = 50;
+    public int speed = 10;
+    public bool lockMovement = false;
+    public bool usingItem = false;
     private Quaternion rotateTo;
 
     private void Awake()
@@ -25,32 +27,34 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         // check for movement input
-        Vector2 input = playerControllerBase.GetInput();
-        float inputX = input.x;
-        float inputY = input.y;
+        if (!lockMovement) {
+            Vector2 input = playerControllerBase.GetInput();
+            float inputX = input.x;
+            float inputY = input.y;
 
-        Vector3 convertedX = Camera.main.transform.right * inputX;
-        convertedX.y = 0;
-        float oldXMagnitude = Mathf.Abs(inputX);
-        float newXMagnitude = convertedX.magnitude;
-        if (newXMagnitude == 0) {
-            convertedX = Vector3.zero;
-        } else {
-            convertedX *= oldXMagnitude / newXMagnitude;
+            Vector3 convertedX = Camera.main.transform.right * inputX;
+            convertedX.y = 0;
+            float oldXMagnitude = Mathf.Abs(inputX);
+            float newXMagnitude = convertedX.magnitude;
+            if (newXMagnitude == 0) {
+                convertedX = Vector3.zero;
+            } else {
+                convertedX *= oldXMagnitude / newXMagnitude;
+            }
+
+
+            Vector3 convertedY = Camera.main.transform.up * inputY;
+            convertedY.y = 0;
+            float oldYMagnitude = Mathf.Abs(inputY);
+            float newYMagnitude = convertedY.magnitude;
+            if (newYMagnitude == 0) {
+                convertedY = Vector3.zero;
+            } else {
+                convertedY *= oldYMagnitude / newYMagnitude;
+            }
+
+            this.Move(convertedX + convertedY);
         }
-
-
-        Vector3 convertedY = Camera.main.transform.up * inputY;
-        convertedY.y = 0;
-        float oldYMagnitude = Mathf.Abs(inputY);
-        float newYMagnitude = convertedY.magnitude;
-        if (newYMagnitude == 0) {
-            convertedY = Vector3.zero;
-        } else {
-            convertedY *= oldYMagnitude / newYMagnitude;
-        }
-
-        this.Move(convertedX + convertedY);
     }
 
     public void Move(Vector3 movement) {
@@ -62,13 +66,25 @@ public class PlayerScript : MonoBehaviour
     }
 
     public void UseItem(int index) {
-        Item item = inventory.items[index];
-        if (item != null) {
-            Debug.Log("Used item " + index);
-            Pickupable pickupable = PickupableFactory.Instance.Activate(item);
-            pickupable.gameObject.transform.position = transform.position + transform.forward;
-            pickupable.BeginDeactivate();
+        if (!usingItem) {
+            usingItem = true;
+            lockMovement = true;
+            Item item = inventory.items[index];
+            if (item != null) {
+                Debug.Log("Used item " + index);
+                Pickupable pickupable = PickupableFactory.Instance.Activate(item);
+                pickupable.DisablePhysics();
+                pickupable.transform.parent = transform;
+                pickupable.transform.localPosition = new Vector3(0, 0, 1);
+                IEnumerator coroutine = pickupable.Deactivate(this.OnItemDeactivated);
+                StartCoroutine(coroutine);
+            }
         }
+    }
+
+    void OnItemDeactivated() {
+        this.lockMovement = false;
+        this.usingItem = false;
     }
 
     public void SetPlayerController(PlayerControllerBase p) {

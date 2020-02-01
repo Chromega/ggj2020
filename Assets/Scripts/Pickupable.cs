@@ -8,11 +8,14 @@ public class Pickupable : MonoBehaviour
     public Item item;
 
     public bool collided = false;
+    public float deactivationTime = 0.25f;
 
     private GameObject model;
+    public Rigidbody rigidBody;
 
     private void Awake()
     {
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     // Pick up items when triggere by player colliders
@@ -38,20 +41,28 @@ public class Pickupable : MonoBehaviour
         model = Instantiate(item.prefab, this.transform);
     }
 
+    public void DisablePhysics()
+    {
+        rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    public void EnablePhysics()
+    {
+        rigidBody.constraints = RigidbodyConstraints.None;
+    }
+
     public void Consume()
     {
 
     }
 
-    IEnumerator Deactivate()
+    public IEnumerator Deactivate(System.Action callback)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(deactivationTime);
         PickupableFactory.Instance.Deactivate(this);
-    }
-
-    public void BeginDeactivate()
-    {
-        StartCoroutine("Deactivate");
+        transform.parent = PickupableFactory.Instance.transform;
+        this.EnablePhysics();
+        callback?.Invoke();
     }
 
     public void Reset()
