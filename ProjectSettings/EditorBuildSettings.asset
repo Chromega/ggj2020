@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 2e9b247090a66e5498488b27fc6ed6ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestClient.unity
     guid: ff958b6e87a64d340b089e4920dd05ca
+  - enabled: 1
+    path: Assets/Scenes/PhoneScene.unity
+    guid: 1d9a6730d20dc468d8a0e756a5a1675e
   - enabled: 1
     path: Assets/Scenes/TestHost.unity
     guid: 08f486961c21c0d4593d63ad6718b196

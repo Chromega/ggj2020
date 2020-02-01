@@ -53,7 +53,7 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
 #if UNITY_STANDALONE
         UnityEngine.SceneManagement.SceneManager.LoadScene("TestHost", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 #else
-        UnityEngine.SceneManagement.SceneManager.LoadScene("TestClient", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("PhoneScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 #endif
     }
 

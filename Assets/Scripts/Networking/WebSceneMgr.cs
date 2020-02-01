@@ -5,6 +5,8 @@ using Photon.Pun;
 
 public class WebSceneMgr : MonoBehaviour
 {
+    public FixedJoystick joystick;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,9 @@ public class WebSceneMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (NetPlayerController.LocalInstance)
+        {
+            NetPlayerController.LocalInstance.SetInput(new Vector2(joystick.Horizontal, joystick.Vertical));
+        }
     }
 }
