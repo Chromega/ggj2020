@@ -11,9 +11,12 @@ public class Game : Singleton<Game>
     public PlayerScript player3;
     public PlayerScript player4;
 
+    public GameObject water;
+
     private void Awake()
     {
         ship = GameObject.Find("Ship").GetComponent<Ship>();
+        water = GameObject.Find("environ-water");
         voyage = GetComponent<VoyageManager>();
         //player1 = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
@@ -36,5 +39,6 @@ public class Game : Singleton<Game>
         {
             voyage.ResetVoyage();
         }
+        water.transform.position = new Vector3(ship.transform.position.x, ship.HullPercentage(), ship.transform.position.z);
     }
 }
