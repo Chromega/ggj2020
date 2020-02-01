@@ -36,6 +36,7 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
     {
         // hard code this since git keeps dropping it
         PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "66c28b24-7787-47a5-ba65-ebaf45f5c125";
+        PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = "usw";
 
         PhotonNetwork.AutomaticallySyncScene = false;
         PhotonNetwork.LocalPlayer.NickName = Random.Range(0,1000).ToString();
@@ -130,7 +131,7 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
 
         //PhotonNetwork.JoinRandomRoom();
         //PhotonNetwork.JoinRoom(maxRoomString);
-        
+
         for (int i = 0; i < roomButtonList.childCount; ++i)
         {
             if (roomButtonList.GetChild(i).gameObject == roomButtonPrefab.gameObject)
