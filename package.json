@@ -17,5 +17,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/seanyliu/ggj2020"
-  }
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
 }
