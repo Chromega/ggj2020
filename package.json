@@ -1,5 +1,5 @@
 {
-  "name": "ggj2020",
+  "name": "ls",
   "version": "0.0.1",
   "description": "Global Game Jam 2020",
   "engines": {
@@ -16,12 +16,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/seanyliu/ggj2020"
+    "url": "git+https://github.com/seanyliu/ggj2020.git"
   },
   "keywords": [
     "node",
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seanyliu/ggj2020/issues"
+  },
+  "homepage": "https://github.com/seanyliu/ggj2020#readme",
+  "author": ""
 }
