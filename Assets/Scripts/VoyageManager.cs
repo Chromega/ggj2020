@@ -58,7 +58,7 @@ public class VoyageManager : MonoBehaviour
 
     public float GetCurrentProgress()
     {
-        return distanceProgress / goalDistance;
+        return Mathf.Clamp(distanceProgress / goalDistance, 0f, 1f);
     }
 
     public void ResetVoyage()
