@@ -5,6 +5,8 @@ using UnityEngine;
 public class LobbyCharacter : MonoBehaviour
 {
     Vector3 startPos;
+    bool appeared = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,8 +16,22 @@ public class LobbyCharacter : MonoBehaviour
 
     public void Appear()
     {
+        appeared = true;
         gameObject.SetActive(true);
         StartCoroutine(Slide(new Vector3(startPos.x - 10, startPos.y, startPos.z), startPos, .5f));
+    }
+
+    public void Hide()
+    {
+        appeared = false;
+        if (gameObject.activeSelf)
+            StartCoroutine(Slide(startPos, new Vector3(startPos.x - 10, startPos.y, startPos.z), .5f));
+
+    }
+
+    public bool GetAppeared()
+    {
+        return appeared;
     }
 
     public void Exit()

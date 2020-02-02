@@ -17,9 +17,19 @@ public class HostSceneMgr : MonoBehaviour
         Instance = this;
     }
 
-    public void RegisterPlayer(PlayerControllerBase p)
+    public void RegisterPlayer(PlayerControllerBase p, bool preExisting=false)
     {
-        int index = playerControllers.Count;
+        int index = p.GetPlayerIndex();
+        if (!preExisting)
+        {
+            index = 0;
+            while (true)
+            {
+                if (!PlayerControllerBase.sExistingControllers.ContainsKey(index))
+                    break;
+                ++index;
+            }
+        }
         p.SetPlayerIndex(index);
         playerControllers.Add(p);
         Debug.Log(index);
@@ -38,6 +48,12 @@ public class HostSceneMgr : MonoBehaviour
                 LocalPlayerController lpc = Instantiate(localPlayerControllerPrefab);
                 RegisterPlayer(lpc);
             }
+        }
+
+        Dictionary<int, PlayerControllerBase> dictCopy = new Dictionary<int, PlayerControllerBase>(PlayerControllerBase.sExistingControllers);
+        foreach (var kvp in dictCopy)
+        {
+            RegisterPlayer(kvp.Value, true);
         }
 
         //Could make extra local players here too if lobby says we need to

@@ -4,8 +4,9 @@ using UnityEngine;
 using Photon.Pun;
 using TMPro;
 using UnityEngine.UI;
+using Photon.Realtime;
 
-public class WebSceneMgr : MonoBehaviour
+public class WebSceneMgr : MonoBehaviourPunCallbacks
 {
     public FixedJoystick joystick;
     public Canvas uiCanvas;
@@ -102,6 +103,16 @@ public class WebSceneMgr : MonoBehaviour
         // Use string Join to concatenate the string elements.
         string result = string.Join(".", array);
         return result;
+    }
+
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public override void OnLeftRoom()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LobbyClient");
     }
 
     private void ShowAnimalChar(int index)

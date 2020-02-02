@@ -23,12 +23,26 @@ public class NetPlayerController : PlayerControllerBase
         DontDestroyOnLoad(this);
      }
 
-    IEnumerator Start()
+    void Start()
     {
-        while (!HostSceneMgr.Instance)
+        /*while (!HostSceneMgr.Instance)
             yield return null;
         
-        HostSceneMgr.Instance.RegisterPlayer(this);
+        HostSceneMgr.Instance.RegisterPlayer(this);*/
+        if (HostSceneMgr.Instance)
+            HostSceneMgr.Instance.RegisterPlayer(this);
+        else if (HostLobbyMgr.Instance)
+        {
+
+            int index = 0;
+            while (true)
+            {
+                if (!PlayerControllerBase.sExistingControllers.ContainsKey(index))
+                    break;
+                ++index;
+            }
+            SetPlayerIndex(index);
+        }
     }
 
     // Update is called once per frame
@@ -72,11 +86,6 @@ public class NetPlayerController : PlayerControllerBase
     public override string[] GetInventory()
     {
         return netInventory;
-    }
-
-    public int GetPlayerIndex()
-    {
-        return playerIdx;
     }
 
     public override Vector2 GetInput()

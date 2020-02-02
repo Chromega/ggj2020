@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour
     public Inventory inventory;
 
     public int speed = 10;
-    public float slowThreshold = .55f;
+    private float slowThreshold = .40f;
     public bool lockMovement = false;
     public bool usingItem = false;
     private Quaternion rotateTo;
@@ -61,6 +61,9 @@ public class PlayerScript : MonoBehaviour
 
             this.Move(convertedX + convertedY);
         }
+
+        if (!playerControllerBase)
+            gameObject.SetActive(false);
     }
 
     public void Move(Vector3 movement) {

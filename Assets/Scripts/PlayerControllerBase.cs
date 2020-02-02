@@ -4,11 +4,23 @@ using UnityEngine;
 
 public abstract class PlayerControllerBase : MonoBehaviour
 {
+    public static Dictionary<int, PlayerControllerBase> sExistingControllers = new Dictionary<int, PlayerControllerBase>();
     //Not currently synched to net controller
-    protected int playerIdx;
+    protected int playerIdx=0;
 
     public event System.Action<int> onItemUsed;
     public event System.Action<int> onItemDropped;
+
+    void OnDestroy()
+    {
+        if (sExistingControllers.ContainsKey(playerIdx))
+        {
+            if (sExistingControllers[playerIdx] == this)
+            {
+                sExistingControllers.Remove(playerIdx);
+            }
+        }
+    }
 
     protected void triggerItemUsed(int index) {
         onItemUsed?.Invoke(index);
@@ -20,6 +32,12 @@ public abstract class PlayerControllerBase : MonoBehaviour
     public virtual void SetPlayerIndex(int idx)
     {
         playerIdx = idx;
+        sExistingControllers[idx] = this;
+    }
+
+    public int GetPlayerIndex()
+    {
+        return playerIdx;
     }
 
     //The client sets position from the UI here!
