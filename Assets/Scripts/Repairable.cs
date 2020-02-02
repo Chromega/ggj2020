@@ -80,27 +80,25 @@ public class Repairable : MonoBehaviour
         Game.Instance.score += 10;
     }
 
-    public void OnCollisionEnter(Collision collision)
-    {
-        Pickupable pickupable = collision.transform.GetComponent<Pickupable>();
-        if (pickupable != null && pickupable.player != null)
-        {
-            Debug.Log("Pickup collision");
-            if (RepairWithItem(pickupable))
-            {
-                pickupable.Consume();
-            }
-        }
-    }
-
 
     public void OnTriggerEnter(Collider other)
     {
-        if (_broken && other.CompareTag("Player"))
-        {
-            PlayerScript player = other.gameObject.GetComponent<PlayerScript>();
-            // Remove the item if we successfully pick it up
-            player.InformRepairType(repairType);
+        if (_broken) {
+            if (other.CompareTag("Player"))
+            {
+                PlayerScript player = other.gameObject.GetComponent<PlayerScript>();
+                // Remove the item if we successfully pick it up
+                player.InformRepairType(repairType);
+            } else {
+                Pickupable pickupable = other.GetComponentInParent<Pickupable>();
+                if (pickupable != null && pickupable.player != null)
+                {
+                    if (RepairWithItem(pickupable))
+                    {
+                        pickupable.Consume();
+                    }
+                }
+            }
         }
     }
 }
