@@ -69,7 +69,7 @@ public class ClientLobbyMgr : MonoBehaviourPunCallbacks
         Debug.Log("Joined room!");
         lobbyCamera.gameObject.SetActive(false);
         clientLobbyCanvas.gameObject.SetActive(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("PhoneScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("PhoneScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 
     private void UpdateCachedRoomList(List<RoomInfo> roomList)

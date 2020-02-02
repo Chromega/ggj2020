@@ -19,6 +19,7 @@ public class NetPlayerController : PlayerControllerBase
         {
             LocalInstance = this;
         }
+        DontDestroyOnLoad(this);
      }
 
     IEnumerator Start()
