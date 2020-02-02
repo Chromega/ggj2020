@@ -21,17 +21,18 @@ public class NetPlayerController : PlayerControllerBase
         }
      }
 
-    void Start()
+    IEnumerator Start()
     {
-        if (HostSceneMgr.Instance)
-        {
-            HostSceneMgr.Instance.RegisterPlayer(this);
-        }
+        while (!HostSceneMgr.Instance)
+            yield return null;
+        
+        HostSceneMgr.Instance.RegisterPlayer(this);
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         //EVERYTHING HERE IS TEMP AND FOR DEMO PURPOSES ONLY
         if (photonView.IsMine)
         {
@@ -47,7 +48,7 @@ public class NetPlayerController : PlayerControllerBase
                 string[] netInventory = { "hammer", "wrench" };
                 SetInventory(netInventory);
             }
-        }
+        }*/
     }
 
     //The client sets position from the UI here!
@@ -76,11 +77,21 @@ public class NetPlayerController : PlayerControllerBase
         return input;
     }
 
+    public void UseItem(int index) {
+        photonView.RPC("UseItemRpc", RpcTarget.MasterClient, index);
+    }
+
     [PunRPC]
     void SetInputRpc(Vector2 pos)
     {
         this.input = pos;
         //Debug.Log("Client input is " + pos.x + ", " + pos.y);
+    }
+
+    [PunRPC]
+    void UseItemRpc(int index)
+    {
+        triggerItemUsed(index);
     }
 
     [PunRPC]

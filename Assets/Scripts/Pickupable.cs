@@ -58,7 +58,8 @@ public class Pickupable : MonoBehaviour
     public void Consume()
     {
         if (player != null) {
-            player.inventory.GetItem(playerInventorySlot);
+            player.inventory.RemoveItem(playerInventorySlot);
+            player.inventory.NetInventorySync();
         }
         player = null;
         playerInventorySlot = -1;

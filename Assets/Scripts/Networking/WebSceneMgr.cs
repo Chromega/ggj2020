@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.UI;
 
 public class WebSceneMgr : MonoBehaviour
 {
     public FixedJoystick joystick;
     public Canvas uiCanvas;
-    public GameObject buttonPrefab;
+    public Button buttonPrefab;
     public GameObject panelToAttach;
-    public List<GameObject> buttonList = new List<GameObject>();
+    public List<Button> buttonList = new List<Button>();
     string[] inv;
 
     // Start is called before the first frame update
@@ -24,20 +25,22 @@ public class WebSceneMgr : MonoBehaviour
       // instantiate enough buttons
       for (var i = buttonList.Count; i < inv.Length; i++)
       {
-        GameObject button = (GameObject) Instantiate( buttonPrefab ) ;
+        Button button = Instantiate( buttonPrefab ) ;
         button.transform.position = panelToAttach.transform.position;
         Vector3 currentPos = button.transform.position;
         currentPos.y += i*50;
         button.transform.position = currentPos;
         button.GetComponent<RectTransform>().SetParent(panelToAttach.transform);
         int buttonIdx = i;
-        //button.onClick.addListener(() => { Debug.log(buttonIdx); });
+        button.onClick.AddListener(() => {
+          NetPlayerController.LocalInstance.UseItem(buttonIdx);
+        });
         buttonList.Add(button);
       }
 
       for (var i = 0; i < inv.Length; i++)
       {
-        GameObject button = buttonList[i];
+        Button button = buttonList[i];
         button.GetComponentInChildren<TextMeshProUGUI>().text = inv[i];
       }
 

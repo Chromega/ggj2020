@@ -35,18 +35,18 @@ public class VoyageManager : MonoBehaviour
         {
             float speed = ship.GetMovementSpeed();
             distanceProgress += speed * Time.deltaTime;
+            timeToNextBreakage = Mathf.Max(timeToNextBreakage - Time.deltaTime, 0f);
+            if (timeToNextBreakage == 0)
+            {
+                itemSpawner.SpawnItemCount(1);
+                ship.BreakDownRandomly();
+                SetRandomTimeToBreakage();
+            }
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            itemSpawner.SpawnRandomItem();
+            itemSpawner.SpawnItemCount(1);
             ship.BreakDownRandomly();
-        }
-        timeToNextBreakage = Mathf.Max(timeToNextBreakage - Time.deltaTime, 0f);
-        if (timeToNextBreakage == 0)
-        {
-            itemSpawner.SpawnRandomItem();
-            ship.BreakDownRandomly();
-            SetRandomTimeToBreakage();
         }
     }
 
@@ -65,8 +65,7 @@ public class VoyageManager : MonoBehaviour
     {
         distanceProgress = 0f;
         underway = false;
-        ship.StopSailing();
-        ship.Reset();
+        ship.Restart();
     }
 
     public void StartVoyage()

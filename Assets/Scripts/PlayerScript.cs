@@ -17,6 +17,8 @@ public class PlayerScript : MonoBehaviour
     private void Awake()
     {
         inventory = new Inventory();
+        if (!playerControllerBase)
+            gameObject.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
@@ -61,7 +63,11 @@ public class PlayerScript : MonoBehaviour
     }
 
     public void Move(Vector3 movement) {
-        transform.position += speed * movement * Time.deltaTime;
+        float waterDebuff = 1f;
+        if (Game.Instance.ship?.HullPercentage() > .1f) {
+            waterDebuff = .5f;
+        }
+        transform.position += speed * waterDebuff * movement * Time.deltaTime;
         if (movement != Vector3.zero) {
             rotateTo = Quaternion.LookRotation(movement);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotateTo, Time.deltaTime * 20);
@@ -94,5 +100,6 @@ public class PlayerScript : MonoBehaviour
         playerControllerBase = p;
         inventory.player = p;
         p.onItemUsed += this.UseItem;
+        gameObject.SetActive(true);
     }
 }

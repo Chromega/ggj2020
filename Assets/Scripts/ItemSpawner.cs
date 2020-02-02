@@ -55,7 +55,8 @@ public class ItemSpawner : MonoBehaviour
         Pickupable pick = PickupableFactory.Instance.Activate(item);
         float x = (Random.Range(0, X_BOUND) - (X_BOUND / 2)) / 10.0f + X_OFFSET;
         float z = (Random.Range(0, Z_BOUND) - (Z_BOUND / 2)) / 10.0f + Z_OFFSET;
-        pick.transform.position = new Vector3(x, 1f, z);
+        pick.transform.parent = Game.Instance.ship.transform;
+        pick.transform.localPosition = new Vector3(x, 1f, z);
     }
 
     public void SpawnRandomItem()
@@ -72,10 +73,22 @@ public class ItemSpawner : MonoBehaviour
     public int TotalItemsInGame()
     {
         int total = 0;
-        total += Game.Instance.player1.inventory.NumItems();
-        total += Game.Instance.player2.inventory.NumItems();
-        total += Game.Instance.player3.inventory.NumItems();
-        total += Game.Instance.player4.inventory.NumItems();
+        if (Game.Instance.player1 != null)
+        {
+            total += Game.Instance.player1.inventory.NumItems();
+        }
+        if (Game.Instance.player2 != null)
+        {
+            total += Game.Instance.player2.inventory.NumItems();
+        }
+        if (Game.Instance.player3 != null)
+        {
+            total += Game.Instance.player3.inventory.NumItems();
+        }
+        if (Game.Instance.player4 != null)
+        {
+            total += Game.Instance.player4.inventory.NumItems();
+        }
         total += PickupableFactory.Instance.TotalActiveItems();
         return total;
     }
