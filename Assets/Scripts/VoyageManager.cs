@@ -18,8 +18,8 @@ public class VoyageManager : MonoBehaviour
 
     private float timeToNextBreakage;
 
-    const float MIN_SECONDS_BETWEEN_BREAKS = 0.5f;
-    const float MAX_SECONDS_BETWEEN_BREAKS = 3.0f;
+    const float MIN_SECONDS_BETWEEN_BREAKS = 3f;
+    const float MAX_SECONDS_BETWEEN_BREAKS = 5f;
 
     // Start is called before the first frame update
     void Start()
