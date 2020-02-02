@@ -4,7 +4,7 @@
 o duct-tape
 
 # material
-mtllib obj-2-duct-tape.mtl
+mtllib obj-5-duct-tape.mtl
 usemtl palette
 
 # normals
