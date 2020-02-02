@@ -14,6 +14,8 @@ public class WebSceneMgr : MonoBehaviour
     public List<Button> buttonList = new List<Button>();
     public TextMeshProUGUI repairHelperTextUI;
     public List<GameObject> animalImages;
+    public Camera cameraToChangeBgColor;
+    public List<Color> bgColors;
     string[] inv;
 
     // Start is called before the first frame update
@@ -64,15 +66,18 @@ public class WebSceneMgr : MonoBehaviour
     {
         if (NetPlayerController.LocalInstance)
         {
+            // Set the background color
+            cameraToChangeBgColor.backgroundColor = bgColors[NetPlayerController.LocalInstance.GetPlayerIndex()];
+
+            // Pass the input
             NetPlayerController.LocalInstance.SetInput(new Vector2(joystick.Horizontal, joystick.Vertical));
 
-            // check inventory
+            // check inventory and show buttons
             string[] netInventory = NetPlayerController.LocalInstance.GetInventory();
             string netInventoryStr = ConvertStringArrayToStringJoin(netInventory);
-            //Debug.Log(netInventoryStr);
             updateInventoryButtons(netInventory);
 
-            // if inventory is empty, show the character on the screen
+            // show the character image on the screen
             if (netInventory.Length == 0)
             {
                 animalImages[NetPlayerController.LocalInstance.GetPlayerIndex()].SetActive(true);
