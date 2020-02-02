@@ -18,7 +18,7 @@ public class Inventory
     const int SIZE = 4;
 
     // Remove an item from the inventory and return it
-    public Item GetItem(int index)
+    public Item RemoveItem(int index)
     {
         Item item = items[index];
         items[index] = null;
