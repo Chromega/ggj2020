@@ -65,8 +65,10 @@ public class Repairable : MonoBehaviour
         if (pickupable.item.repairType == repairType)
         {
             Repair();
+            AttemptRepairAudio.Instance.playRightRepairClip();
             return true;
         }
+        AttemptRepairAudio.Instance.playWrongRepair();
         return false;
     }
 
