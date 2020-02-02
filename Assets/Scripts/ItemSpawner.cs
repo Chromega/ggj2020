@@ -42,6 +42,7 @@ public class ItemSpawner : MonoBehaviour
     // Spawn a number of items if under max item count
     public void SpawnItemCount(int num)
     {
+        Debug.Log(TotalItemsInGame());
         if (TotalItemsInGame() <= MAX_ITEMS)
         {
             for (int i = 0; i < num; i++)
@@ -73,10 +74,22 @@ public class ItemSpawner : MonoBehaviour
     public int TotalItemsInGame()
     {
         int total = 0;
-        total += Game.Instance.player1.inventory.NumItems();
-        total += Game.Instance.player2.inventory.NumItems();
-        total += Game.Instance.player3.inventory.NumItems();
-        total += Game.Instance.player4.inventory.NumItems();
+        if (Game.Instance.player1 != null)
+        {
+            total += Game.Instance.player1.inventory.NumItems();
+        }
+        if (Game.Instance.player2 != null)
+        {
+            total += Game.Instance.player2.inventory.NumItems();
+        }
+        if (Game.Instance.player3 != null)
+        {
+            total += Game.Instance.player3.inventory.NumItems();
+        }
+        if (Game.Instance.player4 != null)
+        {
+            total += Game.Instance.player4.inventory.NumItems();
+        }
         total += PickupableFactory.Instance.TotalActiveItems();
         return total;
     }
