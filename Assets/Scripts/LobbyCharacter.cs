@@ -20,7 +20,8 @@ public class LobbyCharacter : MonoBehaviour
 
     public void Exit()
     {
-        StartCoroutine(Slide(startPos, new Vector3(startPos.x + 10, startPos.y, startPos.z), .5f));
+        if (gameObject.activeSelf)
+            StartCoroutine(Slide(startPos, new Vector3(startPos.x + 10, startPos.y, startPos.z), .5f));
     }
     
     IEnumerator Slide(Vector3 start, Vector3 end, float time)
