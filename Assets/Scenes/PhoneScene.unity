@@ -810,7 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 1038325205}
   uiCanvas: {fileID: 205204610}
-  buttonPrefab: {fileID: 7500642668475162222, guid: 5014f7ff4f6444485b40c8023a2cf6b5,
+  buttonPrefab: {fileID: 7500642668475162216, guid: 5014f7ff4f6444485b40c8023a2cf6b5,
     type: 3}
   panelToAttach: {fileID: 1713919822}
   buttonList: []
