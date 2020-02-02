@@ -19,12 +19,15 @@ public class Game : Singleton<Game>
     private GameObject[] gameOverObjects;
     private GameObject[] victoryObjects;
 
+    public int score = 0;
+
+    private Coroutine startVoyageCoroutine;
+
     private void Awake()
     {
         ship = GameObject.Find("Ship").GetComponent<Ship>();
         water = GameObject.Find("environ-water");
         voyage = GetComponent<VoyageManager>();
-        //player1 = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
 
     private void Start()
@@ -40,15 +43,15 @@ public class Game : Singleton<Game>
         foreach (GameObject obj in gameOverObjects) {
 			obj.SetActive(false);
 		}
+        foreach (GameObject obj in victoryObjects) {
+			obj.SetActive(false);
+		}
         UnPause();
+        StartCoroutine(StartVoyage());
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            voyage.StartVoyage();
-        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Restart();
@@ -66,14 +69,20 @@ public class Game : Singleton<Game>
             }
         }
         water.transform.position = new Vector3(ship.transform.position.x, GetWaterLevel(), ship.transform.position.z);
-        if (ship.HullPercentage() == 1.0f)
+        if (!gameOver && ship.HullPercentage() == 1.0f)
         {
             GameOver();
         }
-        if (voyage.GetCurrentProgress() == 1.0f)
+        if (!gameOver && voyage.GetCurrentProgress() == 1.0f)
         {
             Victory();
         }
+    }
+
+    IEnumerator StartVoyage() {
+        yield return new WaitForSeconds(5.5f);
+        Debug.Log("StartVoyage");
+        voyage.StartVoyage();
     }
 
     public float GetWaterLevel()
@@ -98,11 +107,12 @@ public class Game : Singleton<Game>
 
     void Victory()
     {
+        Debug.Log("Victory!");
         gameOver = true;
-        Time.timeScale = 0;
         foreach (GameObject obj in victoryObjects) {
 			obj.SetActive(true);
 		}
+        Time.timeScale = 0;
     }
 
     void Restart()
@@ -114,11 +124,20 @@ public class Game : Singleton<Game>
         player2?.Reset();
         player3?.Reset();
         player4?.Reset();
+        score = 0;
         PickupableFactory.Instance.Reset();
         foreach (GameObject obj in gameOverObjects) {
 			obj.SetActive(false);
 		}
+        foreach (GameObject obj in victoryObjects) {
+			obj.SetActive(false);
+		}
         UnPause();
+        GameObject.Find("AudioManager").GetComponent<IntroThenLoop>().Restart();
+        if (startVoyageCoroutine != null) {
+            StopCoroutine(startVoyageCoroutine);
+        }
+        startVoyageCoroutine = StartCoroutine(StartVoyage());
     }
 
     void Pause()

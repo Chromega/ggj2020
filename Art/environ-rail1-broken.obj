@@ -4,7 +4,7 @@
 o rail1-broken
 
 # material
-mtllib environ-4-rail1-broken.mtl
+mtllib environ-8-rail1-broken.mtl
 usemtl palette
 
 # normals

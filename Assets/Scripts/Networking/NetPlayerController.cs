@@ -10,6 +10,7 @@ public class NetPlayerController : PlayerControllerBase
 
     public Vector2 input;
     public string[] netInventory;
+    public string repairTypeHelperText;
 
     // Start is called before the first frame update
     void Awake()
@@ -19,6 +20,7 @@ public class NetPlayerController : PlayerControllerBase
         {
             LocalInstance = this;
         }
+        DontDestroyOnLoad(this);
      }
 
     IEnumerator Start()
@@ -81,6 +83,11 @@ public class NetPlayerController : PlayerControllerBase
         photonView.RPC("UseItemRpc", RpcTarget.MasterClient, index);
     }
 
+    public override void SetRepairTypeHelperText(string repairTypeHelperText)
+    {
+        photonView.RPC("SetRepairTypeHelperTextRpc", RpcTarget.Others, repairTypeHelperText);
+    }
+
     [PunRPC]
     void SetInputRpc(Vector2 pos)
     {
@@ -99,5 +106,11 @@ public class NetPlayerController : PlayerControllerBase
     {
         this.netInventory = netInventory;
         //Debug.Log("Inventory is " + netInventory.Length + " items");
+    }
+
+    [PunRPC]
+    void SetRepairTypeHelperTextRpc(string repairTypeHelperText)
+    {
+        this.repairTypeHelperText = repairTypeHelperText;
     }
 }

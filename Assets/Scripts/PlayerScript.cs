@@ -98,6 +98,7 @@ public class PlayerScript : MonoBehaviour
 
     public void InformRepairType(RepairType repairType) {
         Debug.Log(repairType);
+        playerControllerBase.SetRepairTypeHelperText(repairType.ToString());
     }
 
     public void Reset() {

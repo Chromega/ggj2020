@@ -12,6 +12,7 @@ public class WebSceneMgr : MonoBehaviour
     public Button buttonPrefab;
     public GameObject panelToAttach;
     public List<Button> buttonList = new List<Button>();
+    public TextMeshProUGUI repairHelperTextUI;
     string[] inv;
 
     // Start is called before the first frame update
@@ -23,30 +24,39 @@ public class WebSceneMgr : MonoBehaviour
     public void updateInventoryButtons(string[] inv)
     {
       // instantiate enough buttons
+      /* buttons are pre-instantiated
       for (var i = buttonList.Count; i < inv.Length; i++)
       {
-        Button button = Instantiate( buttonPrefab ) ;
-        button.transform.position = panelToAttach.transform.position;
-        Vector3 currentPos = button.transform.position;
-        currentPos.y += i*50;
-        button.transform.position = currentPos;
-        button.GetComponent<RectTransform>().SetParent(panelToAttach.transform);
-        int buttonIdx = i;
-        button.onClick.AddListener(() => {
-          NetPlayerController.LocalInstance.UseItem(buttonIdx);
-        });
-        buttonList.Add(button);
-      }
+            Button button = Instantiate(buttonPrefab, panelToAttach.transform, false);
+            button.transform.position = panelToAttach.transform.position;
+            Vector3 currentPos = button.transform.position;
+            currentPos.y += -50 + i*60;
+            button.transform.position = currentPos;
+            //button.GetComponent<RectTransform>().SetParent(panelToAttach.transform);
+        
+            buttonList.Add(button);
+      }*/
 
       for (var i = 0; i < inv.Length; i++)
       {
-        Button button = buttonList[i];
-        button.GetComponentInChildren<TextMeshProUGUI>().text = inv[i];
+            Button button = buttonList[i];
+            button.GetComponentInChildren<TextMeshProUGUI>().text = inv[i];
+            int buttonIdx = i;
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => {
+                NetPlayerController.LocalInstance.UseItem(buttonIdx);
+            });
+            if (inv[i] != "")
+            {
+                button.gameObject.SetActive(true);
+            } else
+            {
+                button.gameObject.SetActive(false);
+            }
+            
       }
 
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -60,7 +70,16 @@ public class WebSceneMgr : MonoBehaviour
             string netInventoryStr = ConvertStringArrayToStringJoin(netInventory);
             //Debug.Log(netInventoryStr);
             updateInventoryButtons(netInventory);
+
+            // check if there are any tool tips to display
+            //Debug.Log(NetPlayerController.LocalInstance.repairTypeHelperText);
+            if (NetPlayerController.LocalInstance.repairTypeHelperText != "")
+            {
+                repairHelperTextUI.text = "Use " + NetPlayerController.LocalInstance.repairTypeHelperText;
+                repairHelperTextUI.gameObject.SetActive(true);
+            }
         }
+        
     }
 
     public string ConvertStringArrayToStringJoin(string[] array)

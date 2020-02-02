@@ -5,6 +5,7 @@ using UnityEngine;
 public class LocalPlayerController : PlayerControllerBase
 {
     public string[] inventory;
+    public string repairTypeHelperText; // for debugging locally
 
 
     void Update()
@@ -74,5 +75,10 @@ public class LocalPlayerController : PlayerControllerBase
     public override void SetInventory(string[] inventory)
     {
         this.inventory = inventory;
+    }
+
+    public override void SetRepairTypeHelperText(string repairTypeHelperText)
+    {
+        this.repairTypeHelperText = repairTypeHelperText;
     }
 }

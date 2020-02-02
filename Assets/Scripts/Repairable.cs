@@ -55,6 +55,8 @@ public class Repairable : MonoBehaviour
             // Temp handle no items existing
             repairType = RepairType.Tape;
         }
+        AudioSource audio = GetComponentInChildren<AudioSource>();
+        if (audio) audio.Play();
     }
 
     // Set the state of the object to fixed
@@ -73,6 +75,7 @@ public class Repairable : MonoBehaviour
         _broken = false;
         fixedObject.SetActive(true);
         brokenObject.SetActive(false);
+        Game.Instance.score += 10;
     }
 
     public void OnCollisionEnter(Collision collision)

@@ -7,10 +7,12 @@ public class IntroThenLoop : MonoBehaviour
 {
     public AudioClip startClip;
     public AudioClip loopClip;
+
+    private Coroutine soundCoroutine;
     void Start()
     {
         GetComponent<AudioSource>().loop = true;
-        StartCoroutine(playSound());
+        soundCoroutine = StartCoroutine(playSound());
     }
 
     IEnumerator playSound()
@@ -20,5 +22,14 @@ public class IntroThenLoop : MonoBehaviour
         yield return new WaitForSeconds(GetComponent<AudioSource>().clip.length);
         GetComponent<AudioSource>().clip = loopClip;
         GetComponent<AudioSource>().Play();
+    }
+
+    public void Restart()
+    {
+        if (soundCoroutine != null) {
+            StopCoroutine(soundCoroutine);
+        }
+        GetComponent<AudioSource>().Stop();
+        Start();
     }
 }
