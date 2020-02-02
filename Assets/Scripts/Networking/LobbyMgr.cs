@@ -17,6 +17,8 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
     public Transform roomButtonList;
     public Camera lobbyCamera;
 
+    public bool gameStarted;
+
     void Awake()
     {
         Instance = this;
@@ -111,7 +113,10 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                if (!gameStarted) {
+                  gameStarted = true;
+                  UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                }
             }
         }
 #endif
