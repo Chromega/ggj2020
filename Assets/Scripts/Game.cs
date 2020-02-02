@@ -6,6 +6,8 @@ public class Game : Singleton<Game>
 {
     public VoyageManager voyage;
     public Ship ship;
+
+    public IntroThenLoop backgroundAudio;
     public PlayerScript player1;
     public PlayerScript player2;
     public PlayerScript player3;
@@ -40,6 +42,10 @@ public class Game : Singleton<Game>
         gameOverObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
         victoryObjects = GameObject.FindGameObjectsWithTag("ShowOnVictory");
 
+        player1?.Reset();
+        player2?.Reset();
+        player3?.Reset();
+        player4?.Reset();
         foreach (GameObject obj in gameOverObjects) {
 			obj.SetActive(false);
 		}
@@ -134,7 +140,7 @@ public class Game : Singleton<Game>
 			obj.SetActive(false);
 		}
         UnPause();
-        GameObject.Find("AudioManager").GetComponent<IntroThenLoop>().Restart();
+        backgroundAudio.Restart();
         if (startVoyageCoroutine != null) {
             StopCoroutine(startVoyageCoroutine);
         }

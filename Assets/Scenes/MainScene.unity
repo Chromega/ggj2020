@@ -268,6 +268,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: char-raccoon
       objectReference: {fileID: 0}
+    - target: {fileID: 1432819436251962587, guid: 33006422bc5c64b198f77fed7ce3569e,
+        type: 3}
+      propertyPath: playerNum
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33006422bc5c64b198f77fed7ce3569e, type: 3}
 --- !u!114 &376745648 stripped
@@ -822,6 +827,8 @@ MonoBehaviour:
   players:
   - {fileID: 1230637041}
   - {fileID: 999693931}
+  - {fileID: 1974604342}
+  - {fileID: 376745648}
   localPlayerControllerPrefab: {fileID: 7845389787059074128, guid: 078178e24b2280c48836512cfb02bb44,
     type: 3}
 --- !u!4 &1399043137
@@ -838,6 +845,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1441735804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6448755307315783092, guid: bfa3352d1e0b247068ada5bec3189a08,
+    type: 3}
+  m_PrefabInstance: {fileID: 1990317455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc75cfb15de94e11a4b1de8d6ab2054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1974604341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -845,6 +864,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 48415347573732922, guid: c3eb17d577f54412dab1c849adb6888d,
+        type: 3}
+      propertyPath: playerNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2385544929174691134, guid: c3eb17d577f54412dab1c849adb6888d,
         type: 3}
       propertyPath: m_Name
@@ -1113,6 +1137,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1720155770, guid: 7a7c6647e8fcb4d109c52c8a60089891, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1491911315999817446, guid: 7a7c6647e8fcb4d109c52c8a60089891,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1126,6 +1154,11 @@ PrefabInstance:
     - target: {fileID: 1491911315999817446, guid: 7a7c6647e8fcb4d109c52c8a60089891,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491911315999817446, guid: 7a7c6647e8fcb4d109c52c8a60089891,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4631794896702442016, guid: 7a7c6647e8fcb4d109c52c8a60089891,
@@ -1392,6 +1425,16 @@ PrefabInstance:
       propertyPath: player4
       value: 
       objectReference: {fileID: 376745648}
+    - target: {fileID: 5985484629322307117, guid: a8a09381069334dc5a2d279743546b24,
+        type: 3}
+      propertyPath: backgroundAudio
+      value: 
+      objectReference: {fileID: 1441735804}
+    - target: {fileID: 5985484629322307117, guid: a8a09381069334dc5a2d279743546b24,
+        type: 3}
+      propertyPath: ship
+      value: 
+      objectReference: {fileID: 211770943619266516}
     - target: {fileID: 5985484629322307118, guid: a8a09381069334dc5a2d279743546b24,
         type: 3}
       propertyPath: ship
