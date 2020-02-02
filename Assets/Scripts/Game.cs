@@ -44,14 +44,11 @@ public class Game : Singleton<Game>
 			obj.SetActive(false);
 		}
         UnPause();
+        voyage.StartVoyage();
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            voyage.StartVoyage();
-        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Restart();
@@ -126,6 +123,7 @@ public class Game : Singleton<Game>
 			obj.SetActive(false);
 		}
         UnPause();
+        voyage.StartVoyage();
     }
 
     void Pause()
