@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 8246358627696733489}
   - component: {fileID: 625712288179331889}
   - component: {fileID: 6950961657749111338}
+  - component: {fileID: 2974297580358906947}
   m_Layer: 0
   m_Name: obj-mast_fixed
   m_TagString: Untagged
@@ -80,6 +81,20 @@ MonoBehaviour:
   repairType: 0
   fixedObject: {fileID: 94890520878584480}
   brokenObject: {fileID: 94890521665654229}
+--- !u!136 &2974297580358906947
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8246358627696733490}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.75
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5942800821997915140
 PrefabInstance:
   m_ObjectHideFlags: 0

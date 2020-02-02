@@ -87,4 +87,15 @@ public class Repairable : MonoBehaviour
             }
         }
     }
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (_broken && other.CompareTag("Player"))
+        {
+            PlayerScript player = other.gameObject.GetComponent<PlayerScript>();
+            // Remove the item if we successfully pick it up
+            player.InformRepairType(repairType);
+        }
+    }
 }

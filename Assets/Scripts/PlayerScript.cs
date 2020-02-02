@@ -95,6 +95,10 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void InformRepairType(RepairType repairType) {
+        Debug.Log(repairType);
+    }
+
     public void Reset() {
         inventory.Reset();
     }
