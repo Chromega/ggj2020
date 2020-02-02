@@ -995,10 +995,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 373722043796182241, guid: 351f914fc9b54438ba9003233cd29ab2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 957296621484638865, guid: 351f914fc9b54438ba9003233cd29ab2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 995961181072314993, guid: 351f914fc9b54438ba9003233cd29ab2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1716493555009756399, guid: 351f914fc9b54438ba9003233cd29ab2,
         type: 3}
       propertyPath: m_Name
       value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329804837036971223, guid: 351f914fc9b54438ba9003233cd29ab2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7196794540959340539, guid: 351f914fc9b54438ba9003233cd29ab2,
         type: 3}
