@@ -81,10 +81,10 @@ public class WebSceneMgr : MonoBehaviourPunCallbacks
             // show the character image on the screen
             if (netInventory.Length == 0)
             {
-                animalImages[NetPlayerController.LocalInstance.GetPlayerIndex()].SetActive(true);
+                ShowAnimalChar(NetPlayerController.LocalInstance.GetPlayerIndex());
             } else
             {
-                animalImages[NetPlayerController.LocalInstance.GetPlayerIndex()].SetActive(false);
+                HideAnimalChar();
             }
 
             // check if there are any tool tips to display
@@ -113,5 +113,29 @@ public class WebSceneMgr : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("LobbyClient");
+    }
+
+    private void ShowAnimalChar(int index)
+    {
+        animalImages[index].SetActive(true);
+        for (var i = 0; i < animalImages.Count; i++)
+        {
+            if (i == index)
+            {
+                animalImages[i].SetActive(true);
+            } else
+            {
+                animalImages[i].SetActive(false);
+            }
+            
+        }
+    }
+
+    private void HideAnimalChar()
+    {
+        for (var i=0; i<animalImages.Count; i++)
+        {
+            animalImages[i].SetActive(false);
+        }
     }
 }
