@@ -22,6 +22,7 @@ public class HostSceneMgr : MonoBehaviour
         int index = playerControllers.Count;
         p.SetPlayerIndex(index);
         playerControllers.Add(p);
+        Debug.Log(index);
         players[index].SetPlayerController(p);
         //create character for p
     }
