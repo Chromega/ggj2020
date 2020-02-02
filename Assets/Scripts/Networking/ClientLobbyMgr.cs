@@ -101,9 +101,9 @@ public class ClientLobbyMgr : MonoBehaviourPunCallbacks
         foreach (RoomInfo info in roomList)
         {
             string roomName = info.Name;
-            UnityEngine.UI.Button button = Instantiate(roomButtonPrefab);
+            UnityEngine.UI.Button button = Instantiate(roomButtonPrefab, roomButtonList, false);
             button.gameObject.SetActive(true);
-            button.transform.SetParent(roomButtonList);
+            //button.transform.SetParent(roomButtonList);
             button.GetComponentInChildren<UnityEngine.UI.Text>().text = roomName;
             button.onClick.AddListener(() => { PhotonNetwork.JoinRoom(roomName); });
         }
