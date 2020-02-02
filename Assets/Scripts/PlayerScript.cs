@@ -64,7 +64,7 @@ public class PlayerScript : MonoBehaviour
 
     public void Move(Vector3 movement) {
         float waterDebuff = 1f;
-        if (Game.Instance.ship?.HullPercentage() > .1f) {
+        if (Game.Instance.ship?.HullPercentage() > .5f) {
             waterDebuff = .5f;
         }
         transform.position += speed * waterDebuff * movement * Time.deltaTime;

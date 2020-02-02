@@ -13,6 +13,11 @@ public class Game : Singleton<Game>
 
     public GameObject water;
 
+    private bool gameOver = false;
+    private bool paused = false;
+    private GameObject[] pauseObjects;
+    private GameObject[] gameOverObjects;
+
     private void Awake()
     {
         ship = GameObject.Find("Ship").GetComponent<Ship>();
@@ -27,6 +32,13 @@ public class Game : Singleton<Game>
         UIManager.Instance.player2Inventory.AssignInventory(player2.inventory);
         //UIManager.Instance.player1Inventory.AssignInventory(player3.inventory);
         //UIManager.Instance.player1Inventory.AssignInventory(player4.inventory);
+        pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+        gameOverObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
+
+        foreach (GameObject obj in gameOverObjects) {
+			obj.SetActive(false);
+		}
+        UnPause();
     }
     // Update is called once per frame
     void Update()
@@ -37,12 +49,24 @@ public class Game : Singleton<Game>
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            voyage.ResetVoyage();
+            Restart();
+        }
+        if (!gameOver) {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                if (Time.timeScale == 1)
+                {
+                    Pause();
+                } else if (Time.timeScale == 0)
+                {
+                    UnPause();
+                }
+            }
         }
         water.transform.position = new Vector3(ship.transform.position.x, GetWaterLevel(), ship.transform.position.z);
         if (ship.HullPercentage() == 1.0f)
         {
-            Debug.Log("GAME OVER!");
+            GameOver();
         }
     }
 
@@ -56,5 +80,44 @@ public class Game : Singleton<Game>
         {
             return ship.HullPercentage() * 2 - 1.0f;
         }
+    }
+    void GameOver()
+    {
+        Debug.Log("GAME OVER!");
+        gameOver = true;
+        Time.timeScale = 0;
+        foreach (GameObject obj in gameOverObjects) {
+			obj.SetActive(true);
+		}
+    }
+
+    void Restart()
+    {
+        voyage.ResetVoyage();
+        gameOver = false;
+        Time.timeScale = 1;
+
+        foreach (GameObject obj in gameOverObjects) {
+			obj.SetActive(false);
+		}
+        UnPause();
+    }
+
+    void Pause()
+    {
+        paused = true;
+        Time.timeScale = 0;
+        foreach (GameObject obj in pauseObjects) {
+			obj.SetActive(true);
+		}
+    }
+
+    void UnPause()
+    {
+        paused = false;
+        Time.timeScale = 1;
+        foreach (GameObject obj in pauseObjects) {
+			obj.SetActive(false);
+		}
     }
 }
