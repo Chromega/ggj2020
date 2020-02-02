@@ -21,17 +21,18 @@ public class NetPlayerController : PlayerControllerBase
         }
      }
 
-    void Start()
+    IEnumerator Start()
     {
-        if (HostSceneMgr.Instance)
-        {
-            HostSceneMgr.Instance.RegisterPlayer(this);
-        }
+        while (!HostSceneMgr.Instance)
+            yield return null;
+        
+        HostSceneMgr.Instance.RegisterPlayer(this);
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         //EVERYTHING HERE IS TEMP AND FOR DEMO PURPOSES ONLY
         if (photonView.IsMine)
         {
@@ -47,7 +48,7 @@ public class NetPlayerController : PlayerControllerBase
                 string[] netInventory = { "hammer", "wrench" };
                 SetInventory(netInventory);
             }
-        }
+        }*/
     }
 
     //The client sets position from the UI here!
