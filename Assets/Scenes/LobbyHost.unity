@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.061
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.007766367, g: 0.008183002, b: 0.0073858006, a: 0.061}
+  m_IndirectSpecularColor: {r: 0.101396404, g: 0.11693505, b: 0.14138222, a: 0.061}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,7 +214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &197597524
 Light:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.7
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -358,7 +358,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Overboard
+  m_Text: OVERBOARD
 --- !u!222 &201918266
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -527,7 +527,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a018b853e261943a8b6adc18461e6403, type: 2}
+  - {fileID: 2100000, guid: 461d5c4de0a114e85bfaaebeceeaa868, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -914,11 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ddba56165d3d1499bff2100291da63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pvCache: {fileID: 0}
-  clientLobbyCanvas: {fileID: 0}
   hostLobbyCanvas: {fileID: 1687245797}
-  roomButtonPrefab: {fileID: 0}
-  roomButtonList: {fileID: 0}
   lobbyCamera: {fileID: 1051828212}
   lobbyCharacters:
   - {fileID: 7156259557662331773}
@@ -1205,7 +1201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2741507139389532742}
   m_LocalRotation: {x: -0, y: -0.8660254, z: -0, w: -0.50000006}
-  m_LocalPosition: {x: 0.9679836, y: 1.254554, z: -0.63657}
+  m_LocalPosition: {x: 0.8179836, y: 1.254554, z: -0.63657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7165648091601858353}
@@ -1583,7 +1579,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3371645448514117570}
   m_LocalRotation: {x: -0, y: -0.8660254, z: -0, w: -0.50000006}
-  m_LocalPosition: {x: -0.9820165, y: 1.254554, z: -0.63657}
+  m_LocalPosition: {x: -1.1320164, y: 1.254554, z: -0.63657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3371645446741483644}
@@ -1670,7 +1666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4414615687558015312}
   m_LocalRotation: {x: -0, y: -0.8660254, z: -0, w: -0.50000006}
-  m_LocalPosition: {x: 1.9679835, y: 1.254554, z: -0.63657}
+  m_LocalPosition: {x: 1.8179836, y: 1.254554, z: -0.63657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8663071197295342933}
@@ -2232,7 +2228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7156259557662331772}
   m_LocalRotation: {x: -0, y: -0.8660254, z: -0, w: -0.50000006}
-  m_LocalPosition: {x: 0.01, y: 1.254554, z: -0.6365719}
+  m_LocalPosition: {x: -0.14, y: 1.254554, z: -0.6365719}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7156259556807368695}
