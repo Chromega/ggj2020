@@ -4,7 +4,7 @@
 o alert
 
 # material
-mtllib obj-0-alert.mtl
+mtllib obj-3-alert.mtl
 usemtl palette
 
 # normals
