@@ -12,6 +12,7 @@ public class WebSceneMgr : MonoBehaviour
     public Button buttonPrefab;
     public GameObject panelToAttach;
     public List<Button> buttonList = new List<Button>();
+    public TextMeshProUGUI repairHelperTextUI;
     string[] inv;
 
     // Start is called before the first frame update
@@ -61,7 +62,13 @@ public class WebSceneMgr : MonoBehaviour
 
             // check if there are any tool tips to display
             //Debug.Log(NetPlayerController.LocalInstance.repairTypeHelperText);
+            if (NetPlayerController.LocalInstance.repairTypeHelperText != "")
+            {
+                repairHelperTextUI.text = "Use " + NetPlayerController.LocalInstance.repairTypeHelperText;
+                repairHelperTextUI.gameObject.SetActive(true);
+            }
         }
+        
     }
 
     public string ConvertStringArrayToStringJoin(string[] array)
