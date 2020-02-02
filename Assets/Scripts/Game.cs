@@ -75,7 +75,7 @@ public class Game : Singleton<Game>
             }
         }
         water.transform.position = new Vector3(ship.transform.position.x, GetWaterLevel(), ship.transform.position.z);
-        if (!gameOver && ship.HullPercentage() == 1.0f)
+        if (!gameOver && ship.HullPercentage() == 0f)
         {
             GameOver();
         }
@@ -94,13 +94,13 @@ public class Game : Singleton<Game>
 
     public float GetWaterLevel()
     {
-        if (ship.HullPercentage() < 0.5f)
+        if (ship.HullPercentage() > 0.5f)
         {
-            return ship.HullPercentage() - 0.5f;
+            return -ship.HullPercentage() + 0.5f;
         }
         else
         {
-            return ship.HullPercentage() * 2 - 1.0f;
+            return (1 - ship.HullPercentage()) * 2 - 1.0f;
         }
     }
     void GameOver()
