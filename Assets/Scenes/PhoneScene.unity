@@ -883,7 +883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &617606055
 Transform:
   m_ObjectHideFlags: 0
@@ -3200,6 +3200,11 @@ MonoBehaviour:
   - {fileID: 783287485}
   - {fileID: 1195203664}
   repairHelperTextUI: {fileID: 977963968}
+  animalImages:
+  - {fileID: 617606054}
+  - {fileID: 325109839}
+  - {fileID: 1946824850}
+  - {fileID: 297477958}
 --- !u!4 &2117212618
 Transform:
   m_ObjectHideFlags: 0
