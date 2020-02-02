@@ -12,10 +12,12 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
     private Dictionary<string, RoomInfo> cachedRoomList;
 
     public Canvas clientLobbyCanvas;
+    public Canvas hostLobbyCanvas;
 
     public UnityEngine.UI.Button roomButtonPrefab;
     public Transform roomButtonList;
     public Camera lobbyCamera;
+    public LobbyCharacter[] lobbyCharacters;
 
     public bool gameStarted;
 
@@ -28,8 +30,10 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
 
 #if UNITY_STANDALONE
         clientLobbyCanvas.gameObject.SetActive(false);
+        hostLobbyCanvas.gameObject.SetActive(true);
 #else
         clientLobbyCanvas.gameObject.SetActive(true);
+        hostLobbyCanvas.gameObject.SetActive(false);
 #endif
     }
 
@@ -101,8 +105,19 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
         //UnityEngine.SceneManagement.SceneManager.LoadScene("TestHost", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 #else
         UnityEngine.SceneManagement.SceneManager.LoadScene("PhoneScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
-#endif
         lobbyCamera.gameObject.SetActive(false);
+#endif
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+#if UNITY_STANDALONE
+        int idx = PhotonNetwork.CurrentRoom.PlayerCount - 2;
+        if (idx < lobbyCharacters.Length && idx >= 0)
+        {
+            lobbyCharacters[idx].Appear();
+        }
+#endif
     }
 
     // Update is called once per frame
@@ -114,12 +129,25 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (!gameStarted) {
-                  gameStarted = true;
-                  UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
-                }
+                    StartCoroutine(StartGameCoroutine());
+               }
             }
         }
 #endif
+    }
+
+    IEnumerator StartGameCoroutine()
+    {
+        gameStarted = true;
+        foreach (var c in lobbyCharacters)
+        {
+            c.Exit();
+        }
+        yield return new WaitForSeconds(.5f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        lobbyCamera.gameObject.SetActive(false);
+        hostLobbyCanvas.gameObject.SetActive(false);
+
     }
 
     private void UpdateCachedRoomList(List<RoomInfo> roomList)
