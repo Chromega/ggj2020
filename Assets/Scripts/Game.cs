@@ -80,6 +80,7 @@ public class Game : Singleton<Game>
     }
 
     IEnumerator StartVoyage() {
+        GetComponent<ItemSpawner>().SpawnItemCount(2);
         yield return new WaitForSeconds(5.5f);
         Debug.Log("StartVoyage");
         voyage.StartVoyage();
