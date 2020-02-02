@@ -46,8 +46,6 @@ public class WebSceneMgr : MonoBehaviour
 
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
@@ -60,6 +58,9 @@ public class WebSceneMgr : MonoBehaviour
             string netInventoryStr = ConvertStringArrayToStringJoin(netInventory);
             //Debug.Log(netInventoryStr);
             updateInventoryButtons(netInventory);
+
+            // check if there are any tool tips to display
+            //Debug.Log(NetPlayerController.LocalInstance.repairTypeHelperText);
         }
     }
 

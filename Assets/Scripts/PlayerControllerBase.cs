@@ -33,4 +33,6 @@ public abstract class PlayerControllerBase : MonoBehaviour
     public abstract Vector2 GetInput();
 
     public abstract string[] GetInventory();
+
+    public abstract void SetRepairTypeHelperText(string repairTypeHelperText);
 }
