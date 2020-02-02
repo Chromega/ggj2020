@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0696c5156aed041dda3f4bf455b35c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wrongRepairClip: {fileID: 8300000, guid: 0e3d4c3655330405d8e16de7e4ea1e61, type: 3}
-  rightRepairClip: {fileID: 8300000, guid: cf30fb546bd3941e4b1d0512f99d42d7, type: 3}
+  wrongRepairClip: {fileID: 8300000, guid: 17b1c7b2eeb4647ce92448ae15a8882a, type: 3}
+  rightRepairClip: {fileID: 8300000, guid: 18f0a95146c8442299ec5493273a9fa4, type: 3}
 --- !u!82 &7348719819892866430
 AudioSource:
   m_ObjectHideFlags: 0
