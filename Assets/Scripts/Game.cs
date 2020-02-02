@@ -40,6 +40,9 @@ public class Game : Singleton<Game>
         foreach (GameObject obj in gameOverObjects) {
 			obj.SetActive(false);
 		}
+        foreach (GameObject obj in victoryObjects) {
+			obj.SetActive(false);
+		}
         UnPause();
     }
     // Update is called once per frame
@@ -66,11 +69,11 @@ public class Game : Singleton<Game>
             }
         }
         water.transform.position = new Vector3(ship.transform.position.x, GetWaterLevel(), ship.transform.position.z);
-        if (ship.HullPercentage() == 1.0f)
+        if (!gameOver && ship.HullPercentage() == 1.0f)
         {
             GameOver();
         }
-        if (voyage.GetCurrentProgress() == 1.0f)
+        if (!gameOver && voyage.GetCurrentProgress() == 1.0f)
         {
             Victory();
         }
@@ -98,11 +101,12 @@ public class Game : Singleton<Game>
 
     void Victory()
     {
+        Debug.Log("Victory!");
         gameOver = true;
-        Time.timeScale = 0;
         foreach (GameObject obj in victoryObjects) {
 			obj.SetActive(true);
 		}
+        Time.timeScale = 0;
     }
 
     void Restart()
@@ -116,6 +120,9 @@ public class Game : Singleton<Game>
         player4?.Reset();
         PickupableFactory.Instance.Reset();
         foreach (GameObject obj in gameOverObjects) {
+			obj.SetActive(false);
+		}
+        foreach (GameObject obj in victoryObjects) {
 			obj.SetActive(false);
 		}
         UnPause();
