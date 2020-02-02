@@ -61,7 +61,11 @@ public class PlayerScript : MonoBehaviour
     }
 
     public void Move(Vector3 movement) {
-        transform.position += speed * movement * Time.deltaTime;
+        float waterDebuff = 1f;
+        if (Game.Instance.ship?.HullPercentage() > .1f) {
+            waterDebuff = .5f;
+        }
+        transform.position += speed * waterDebuff * movement * Time.deltaTime;
         if (movement != Vector3.zero) {
             rotateTo = Quaternion.LookRotation(movement);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotateTo, Time.deltaTime * 20);

@@ -38,10 +38,7 @@ public class Ship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (sailing)
-        {
-            transform.position += new Vector3(GetMovementSpeed(), 0f, 0f);
-        }
+
     }
 
     public float GetMovementSpeed()
@@ -87,7 +84,6 @@ public class Ship : MonoBehaviour
 
     public void Reset()
     {
-        transform.position = new Vector3(0f, 0f, 0f);
     }
 
     public float HullPercentage()
