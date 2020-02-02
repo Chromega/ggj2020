@@ -30,7 +30,7 @@ public class HostSceneMgr : MonoBehaviour
     {
         PhotonNetwork.Instantiate("HostController", Vector3.zero, Quaternion.identity, 0);
 
-        if (!LobbyMgr.Instance)
+        if (!HostLobbyMgr.Instance)
         {
             //We didn't enter through the lobby, so make local players
             foreach (PlayerScript p in players) {
