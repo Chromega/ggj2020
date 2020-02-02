@@ -89,4 +89,17 @@ public class Ship : MonoBehaviour
     {
         transform.position = new Vector3(0f, 0f, 0f);
     }
+
+    public float HullPercentage()
+    {
+        int broken = 0;
+        for (int i = 0; i < hullComponents.Count; i++)
+        {
+            if (hullComponents[i].broken)
+            {
+                broken++;
+            }
+        }
+        return broken / (float)hullComponents.Count;
+    }
 }
