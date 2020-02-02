@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     public Inventory inventory;
 
     public int speed = 10;
+    public float slowThreshold = .55f;
     public bool lockMovement = false;
     public bool usingItem = false;
     private Quaternion rotateTo;
@@ -64,7 +65,7 @@ public class PlayerScript : MonoBehaviour
 
     public void Move(Vector3 movement) {
         float waterDebuff = 1f;
-        if (Game.Instance.ship?.HullPercentage() > .5f) {
+        if (Game.Instance.ship?.HullPercentage() > slowThreshold) {
             waterDebuff = .5f;
         }
         transform.position += speed * waterDebuff * movement * Time.deltaTime;
