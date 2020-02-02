@@ -104,6 +104,8 @@ public class PlayerScript : MonoBehaviour
     public void Reset() {
         Input.ResetInputAxes();
         inventory.Reset();
+        this.lockMovement = false;
+        this.usingItem = false;
         transform.localPosition = new Vector3(0f, .15f, playerNum * 1f);
         transform.rotation = Quaternion.identity;
     }
