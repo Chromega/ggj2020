@@ -69,7 +69,7 @@ public class ClientLobbyMgr : MonoBehaviourPunCallbacks
         Debug.Log("Joined room!");
         lobbyCamera.gameObject.SetActive(false);
         clientLobbyCanvas.gameObject.SetActive(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("PhoneScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("PhoneScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 
     private void UpdateCachedRoomList(List<RoomInfo> roomList)
@@ -101,9 +101,9 @@ public class ClientLobbyMgr : MonoBehaviourPunCallbacks
         foreach (RoomInfo info in roomList)
         {
             string roomName = info.Name;
-            UnityEngine.UI.Button button = Instantiate(roomButtonPrefab);
+            UnityEngine.UI.Button button = Instantiate(roomButtonPrefab, roomButtonList, false);
             button.gameObject.SetActive(true);
-            button.transform.SetParent(roomButtonList);
+            //button.transform.SetParent(roomButtonList);
             button.GetComponentInChildren<UnityEngine.UI.Text>().text = roomName;
             button.onClick.AddListener(() => { PhotonNetwork.JoinRoom(roomName); });
         }

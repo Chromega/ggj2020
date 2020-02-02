@@ -12,7 +12,7 @@ public class Builder
 
         // Get filename.
         string path = "Builds-Public/phone";////EditorUtility.SaveFolderPanel("Choose Location of Built Game", "", "");
-        string[] levels = new string[] { "Assets/Scenes/Lobby.unity", "Assets/Scenes/PhoneScene.unity" };
+        string[] levels = new string[] { "Assets/Scenes/LobbyClient.unity", "Assets/Scenes/PhoneScene.unity" };
 
         // Build player.
         BuildPipeline.BuildPlayer(levels, path, BuildTarget.WebGL, BuildOptions.None);

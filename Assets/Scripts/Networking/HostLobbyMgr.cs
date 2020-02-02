@@ -101,7 +101,7 @@ public class HostLobbyMgr : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(.5f);
         lobbyCamera.gameObject.SetActive(false);
         hostLobbyCanvas.gameObject.SetActive(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
 
     }
 }

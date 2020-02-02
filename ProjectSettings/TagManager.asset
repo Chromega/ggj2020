@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ShowOnPause
   - ShowOnGameOver
+  - ShowOnVictory
   layers:
   - Default
   - TransparentFX
