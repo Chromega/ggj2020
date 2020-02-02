@@ -1031,6 +1031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clientLobbyCanvas: {fileID: 1861693097}
+  hostLobbyCanvas: {fileID: 1687245797}
   roomButtonPrefab: {fileID: 32580878}
   roomButtonList: {fileID: 1589526484}
   lobbyCamera: {fileID: 1051828212}

@@ -12,6 +12,7 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
     private Dictionary<string, RoomInfo> cachedRoomList;
 
     public Canvas clientLobbyCanvas;
+    public Canvas hostLobbyCanvas;
 
     public UnityEngine.UI.Button roomButtonPrefab;
     public Transform roomButtonList;
@@ -29,8 +30,10 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
 
 #if UNITY_STANDALONE
         clientLobbyCanvas.gameObject.SetActive(false);
+        hostLobbyCanvas.gameObject.SetActive(true);
 #else
         clientLobbyCanvas.gameObject.SetActive(true);
+        hostLobbyCanvas.gameObject.SetActive(false);
 #endif
     }
 
@@ -143,6 +146,7 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(.5f);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
         lobbyCamera.gameObject.SetActive(false);
+        hostLobbyCanvas.gameObject.SetActive(false);
 
     }
 
