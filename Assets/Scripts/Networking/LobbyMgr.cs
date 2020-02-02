@@ -97,7 +97,6 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
         clientLobbyCanvas.gameObject.SetActive(false);
 #if UNITY_STANDALONE
         //UnityEngine.SceneManagement.SceneManager.LoadScene("TestHost", UnityEngine.SceneManagement.LoadSceneMode.Additive);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 #else
         UnityEngine.SceneManagement.SceneManager.LoadScene("PhoneScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 #endif
@@ -107,7 +106,15 @@ public class LobbyMgr : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-
+#if UNITY_STANDALONE
+        if (Photon.Pun.PhotonNetwork.InRoom)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            }
+        }
+#endif
     }
 
     private void UpdateCachedRoomList(List<RoomInfo> roomList)

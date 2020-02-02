@@ -17,6 +17,8 @@ public class PlayerScript : MonoBehaviour
     private void Awake()
     {
         inventory = new Inventory();
+        if (!playerControllerBase)
+            gameObject.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
@@ -98,5 +100,6 @@ public class PlayerScript : MonoBehaviour
         playerControllerBase = p;
         inventory.player = p;
         p.onItemUsed += this.UseItem;
+        gameObject.SetActive(true);
     }
 }

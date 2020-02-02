@@ -7,6 +7,9 @@ public enum RepairType
     Hammer,
     Tape,
     Rope,
+    Bucket,
+    Wrench,
+    Saw,
 }
 
 [CreateAssetMenu(menuName = "Items/Item")]
