@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -82,5 +83,11 @@ public class Inventory
             }
         }
         return total;
+    }
+
+    public void Reset()
+    {
+        Array.Clear(items, 0, items.Length);
+        NetInventorySync();
     }
 }
