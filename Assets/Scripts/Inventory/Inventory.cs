@@ -40,24 +40,29 @@ public class Inventory
             }
         }
 
-        // make the network call so the phone knows what inventory we have
-        string[] netInventory = new string[items.Length];
-        for (var i = 0; i < items.Length; i++)
-        {
-            if (items[i] != null)
-            {
-                netInventory[i] = items[i].displayName;
-            } else {
-                netInventory[i] = "";
-            }
-
-        }
-        if (player != null) {
-            player.SetInventory(netInventory);
-        }
+        // sync the inventory with the mobile view
+        NetInventorySync();
 
         // return whether the add succeeded
         return itemAdded;
+    }
+
+    public void NetInventorySync() {
+      // make the network call so the phone knows what inventory we have
+      string[] netInventory = new string[items.Length];
+      for (var i = 0; i < items.Length; i++)
+      {
+          if (items[i] != null)
+          {
+              netInventory[i] = items[i].displayName;
+          } else {
+              netInventory[i] = "";
+          }
+
+      }
+      if (player != null) {
+          player.SetInventory(netInventory);
+      }
     }
 
     // Use an item. Returns whether successful or not
