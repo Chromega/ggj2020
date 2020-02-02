@@ -25,12 +25,12 @@ public class WebSceneMgr : MonoBehaviour
       // instantiate enough buttons
       for (var i = buttonList.Count; i < inv.Length; i++)
       {
-        Button button = Instantiate( buttonPrefab ) ;
+        Button button = Instantiate(buttonPrefab, panelToAttach.transform, false);
         button.transform.position = panelToAttach.transform.position;
         Vector3 currentPos = button.transform.position;
-        currentPos.y += i*50;
+        currentPos.y += -50 + i*60;
         button.transform.position = currentPos;
-        button.GetComponent<RectTransform>().SetParent(panelToAttach.transform);
+        //button.GetComponent<RectTransform>().SetParent(panelToAttach.transform);
         int buttonIdx = i;
         button.onClick.AddListener(() => {
           NetPlayerController.LocalInstance.UseItem(buttonIdx);

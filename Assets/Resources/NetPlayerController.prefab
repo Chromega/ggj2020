@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {x: 0, y: 0}
   netInventory: []
+  repairTypeHelperText: 
 --- !u!114 &1052438321528187655
 MonoBehaviour:
   m_ObjectHideFlags: 0
