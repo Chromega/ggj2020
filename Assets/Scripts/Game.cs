@@ -19,6 +19,8 @@ public class Game : Singleton<Game>
     private GameObject[] gameOverObjects;
     private GameObject[] victoryObjects;
 
+    public int score = 0;
+
     private void Awake()
     {
         ship = GameObject.Find("Ship").GetComponent<Ship>();
@@ -120,6 +122,7 @@ public class Game : Singleton<Game>
         player2?.Reset();
         player3?.Reset();
         player4?.Reset();
+        score = 0;
         PickupableFactory.Instance.Reset();
         foreach (GameObject obj in gameOverObjects) {
 			obj.SetActive(false);

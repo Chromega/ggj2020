@@ -73,6 +73,7 @@ public class Repairable : MonoBehaviour
         _broken = false;
         fixedObject.SetActive(true);
         brokenObject.SetActive(false);
+        Game.Instance.score += 10;
     }
 
     public void OnCollisionEnter(Collision collision)

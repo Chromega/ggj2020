@@ -8,7 +8,7 @@ public class Ship : MonoBehaviour
     public float baseMovementSpeed = 0.1f;
 
     // Movement penalty per engine
-    public float movementSpeedPenalty = 0.2f;
+    public float movementSpeedPenalty = 0.05f;
 
     // Each speed object on the ship
     public List<Repairable> speedComponents;
@@ -56,10 +56,10 @@ public class Ship : MonoBehaviour
     public float GetMovementSpeed()
     {
         float movementSpeed = baseMovementSpeed;
-        // Each broken engine reduces speed by 20% multiplicatively
-        foreach (Repairable engine in speedComponents)
+        // Each broken component reduces speed by 5% multiplicatively
+        foreach (Repairable component in allRepairables)
         {
-            if (engine.broken)
+            if (component.broken)
             {
                 movementSpeed = movementSpeed * movementSpeedPenalty;
             }
