@@ -92,6 +92,8 @@ MonoBehaviour:
 
     Rajeev Nayak
 
+    Sean Liu
+
     Xin Xin'
 --- !u!1 &9065235364449696637
 GameObject:
@@ -106,7 +108,7 @@ GameObject:
   - component: {fileID: 9065235364449696639}
   - component: {fileID: 9065235364449696636}
   m_Layer: 5
-  m_Name: Credits
+  m_Name: credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
