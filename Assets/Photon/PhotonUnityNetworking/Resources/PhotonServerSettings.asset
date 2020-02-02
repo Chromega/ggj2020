@@ -39,5 +39,6 @@ MonoBehaviour:
   - SetInputRpc
   - UseItemRpc
   - SetRepairTypeHelperTextRpc
+  - SetPlayerIndexRpc
   DisableAutoOpenWizard: 1
   ShowSettings: 1
