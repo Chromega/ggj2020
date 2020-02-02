@@ -40,5 +40,9 @@ public class Game : Singleton<Game>
             voyage.ResetVoyage();
         }
         water.transform.position = new Vector3(ship.transform.position.x, ship.HullPercentage(), ship.transform.position.z);
+        if (ship.HullPercentage() == 1.0f)
+        {
+            Debug.Log("GAME OVER!");
+        }
     }
 }

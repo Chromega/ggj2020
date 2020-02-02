@@ -77,11 +77,21 @@ public class NetPlayerController : PlayerControllerBase
         return input;
     }
 
+    public void UseItem(int index) {
+        photonView.RPC("UseItemRpc", RpcTarget.MasterClient, index);
+    }
+
     [PunRPC]
     void SetInputRpc(Vector2 pos)
     {
         this.input = pos;
         //Debug.Log("Client input is " + pos.x + ", " + pos.y);
+    }
+
+    [PunRPC]
+    void UseItemRpc(int index)
+    {
+        triggerItemUsed(index);
     }
 
     [PunRPC]
