@@ -8,7 +8,7 @@ public class PickupableFactory : Singleton<PickupableFactory>
     public Pickupable pickupablePrefab;
     private List<Pickupable> pool;
 
-    private void Start()
+    private void Awake()
     {
         Pickupable temp;
         pool = new List<Pickupable>();
