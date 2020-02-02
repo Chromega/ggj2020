@@ -13,6 +13,7 @@ public class WebSceneMgr : MonoBehaviour
     public GameObject panelToAttach;
     public List<Button> buttonList = new List<Button>();
     public TextMeshProUGUI repairHelperTextUI;
+    public List<GameObject> animalImages;
     string[] inv;
 
     // Start is called before the first frame update
@@ -70,6 +71,15 @@ public class WebSceneMgr : MonoBehaviour
             string netInventoryStr = ConvertStringArrayToStringJoin(netInventory);
             //Debug.Log(netInventoryStr);
             updateInventoryButtons(netInventory);
+
+            // if inventory is empty, show the character on the screen
+            if (netInventory.Length == 0)
+            {
+                animalImages[NetPlayerController.LocalInstance.GetPlayerIndex()].SetActive(true);
+            } else
+            {
+                animalImages[NetPlayerController.LocalInstance.GetPlayerIndex()].SetActive(false);
+            }
 
             // check if there are any tool tips to display
             //Debug.Log(NetPlayerController.LocalInstance.repairTypeHelperText);
