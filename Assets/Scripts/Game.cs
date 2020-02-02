@@ -21,6 +21,8 @@ public class Game : Singleton<Game>
 
     public int score = 0;
 
+    private Coroutine startVoyageCoroutine;
+
     private void Awake()
     {
         ship = GameObject.Find("Ship").GetComponent<Ship>();
@@ -131,7 +133,11 @@ public class Game : Singleton<Game>
 			obj.SetActive(false);
 		}
         UnPause();
-        StartCoroutine(StartVoyage());
+        GameObject.Find("AudioManager").GetComponent<IntroThenLoop>().Restart();
+        if (startVoyageCoroutine != null) {
+            StopCoroutine(startVoyageCoroutine);
+        }
+        startVoyageCoroutine = StartCoroutine(StartVoyage());
     }
 
     void Pause()
