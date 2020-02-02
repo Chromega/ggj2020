@@ -17,6 +17,7 @@ public class Game : Singleton<Game>
     private bool paused = false;
     private GameObject[] pauseObjects;
     private GameObject[] gameOverObjects;
+    private GameObject[] victoryObjects;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class Game : Singleton<Game>
         //UIManager.Instance.player1Inventory.AssignInventory(player4.inventory);
         pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
         gameOverObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
+        victoryObjects = GameObject.FindGameObjectsWithTag("ShowOnVictory");
 
         foreach (GameObject obj in gameOverObjects) {
 			obj.SetActive(false);
@@ -68,6 +70,10 @@ public class Game : Singleton<Game>
         {
             GameOver();
         }
+        if (voyage.GetCurrentProgress() == 1.0f)
+        {
+            Victory();
+        }
     }
 
     public float GetWaterLevel()
@@ -86,6 +92,15 @@ public class Game : Singleton<Game>
         gameOver = true;
         Time.timeScale = 0;
         foreach (GameObject obj in gameOverObjects) {
+			obj.SetActive(true);
+		}
+    }
+
+    void Victory()
+    {
+        gameOver = true;
+        Time.timeScale = 0;
+        foreach (GameObject obj in victoryObjects) {
 			obj.SetActive(true);
 		}
     }
