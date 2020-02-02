@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.47899607, g: 0.8322844, b: 0.8679245, a: 1}
+  m_Color: {r: 0.6963332, g: 0.9056604, b: 0.7813208, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -601,8 +601,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284071568
-  m_fontColor: {r: 0.5638891, g: 0.745283, b: 0.3480331, a: 1}
+    rgba: 4288666348
+  m_fontColor: {r: 0.9245283, g: 0.85404265, b: 0.6236205, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1160,8 +1160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 20, y: -60}
-  m_SizeDelta: {x: -20, y: 40}
+  m_AnchoredPosition: {x: 24, y: -70}
+  m_SizeDelta: {x: -24, y: 40}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4631794897979783954
 CanvasRenderer:
@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Progress
+  m_text: 'Progress:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8749e2de2c5364b8dadc92bab9151763, type: 2}
   m_sharedMaterial: {fileID: -8410680020420483212, guid: 8749e2de2c5364b8dadc92bab9151763,
@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4631794897979784045}
-    characterCount: 8
+    characterCount: 9
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
