@@ -19,8 +19,6 @@ public class Item : ScriptableObject
     public string displayName;
     // What types of objects can be repaired
     public RepairType repairType;
-    // Display icon
-    public Sprite itemIcon;
     // The prefab of the object to spawn
     public GameObject prefab;
 }
