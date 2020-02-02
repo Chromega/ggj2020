@@ -42,7 +42,6 @@ public class ItemSpawner : MonoBehaviour
     // Spawn a number of items if under max item count
     public void SpawnItemCount(int num)
     {
-        Debug.Log(TotalItemsInGame());
         if (TotalItemsInGame() <= MAX_ITEMS)
         {
             for (int i = 0; i < num; i++)

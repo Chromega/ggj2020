@@ -58,16 +58,21 @@ public class Repairable : MonoBehaviour
     }
 
     // Set the state of the object to fixed
-    public bool Repair(Pickupable pickupable)
+    public bool RepairWithItem(Pickupable pickupable)
     {
         if (pickupable.item.repairType == repairType)
         {
-            _broken = false;
-            fixedObject.SetActive(true);
-            brokenObject.SetActive(false);
+            Repair();
             return true;
         }
         return false;
+    }
+
+    public void Repair()
+    {
+        _broken = false;
+        fixedObject.SetActive(true);
+        brokenObject.SetActive(false);
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -76,7 +81,7 @@ public class Repairable : MonoBehaviour
         if (pickupable != null && pickupable.player != null)
         {
             Debug.Log("Pickup collision");
-            if (Repair(pickupable))
+            if (RepairWithItem(pickupable))
             {
                 pickupable.Consume();
             }

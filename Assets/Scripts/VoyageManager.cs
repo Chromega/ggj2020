@@ -65,8 +65,7 @@ public class VoyageManager : MonoBehaviour
     {
         distanceProgress = 0f;
         underway = false;
-        ship.StopSailing();
-        ship.Reset();
+        ship.Restart();
     }
 
     public void StartVoyage()

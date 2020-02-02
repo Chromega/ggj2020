@@ -82,8 +82,17 @@ public class Ship : MonoBehaviour
         }
     }
 
-    public void Reset()
+    public void Restart()
     {
+        StopSailing();
+        foreach (List<Repairable> system in allRepairables)
+        {
+            foreach (Repairable component in system)
+            {
+                component.Repair();
+            }
+        }
+
     }
 
     public float HullPercentage()
