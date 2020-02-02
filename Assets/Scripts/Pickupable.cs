@@ -25,7 +25,6 @@ public class Pickupable : MonoBehaviour
     // Pick up items when triggere by player colliders
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided");
         if (player == null && collision.collider.CompareTag("Player"))
         {
             PlayerScript player = collision.collider.gameObject.GetComponent<PlayerScript>();
