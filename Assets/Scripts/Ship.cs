@@ -112,6 +112,6 @@ public class Ship : MonoBehaviour
                 broken++;
             }
         }
-        return broken / (float)10;
+        return Mathf.Clamp(broken / (float)10, 0, 1f);
     }
 }
