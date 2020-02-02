@@ -21,18 +21,30 @@ public class Ship : MonoBehaviour
     // Each battle object on the ship
     public List<Repairable> battleComponents;
 
-    public List<List<Repairable>> allRepairables;
+    public List<Repairable> allRepairables;
     public bool sailing = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        allRepairables = new List<List<Repairable>>();
+        allRepairables = new List<Repairable>();
         // Right now just manually add each of the repairable categories
-        allRepairables.Add(speedComponents);
-        allRepairables.Add(steeringComponents);
-        allRepairables.Add(hullComponents);
-        allRepairables.Add(battleComponents);
+        foreach (Repairable c in speedComponents)
+        {
+            allRepairables.Add(c);
+        }
+        foreach (Repairable c in steeringComponents)
+        {
+            allRepairables.Add(c);
+        }
+        foreach (Repairable c in hullComponents)
+        {
+            allRepairables.Add(c);
+        }
+        foreach (Repairable c in battleComponents)
+        {
+            allRepairables.Add(c);
+        }
     }
 
     // Update is called once per frame
@@ -70,13 +82,12 @@ public class Ship : MonoBehaviour
     // Break down something random!
     public void BreakDownRandomly()
     {
-        List<Repairable> system = allRepairables[Random.Range(0, allRepairables.Count)];
-        int offset = Random.Range(0, system.Count);
-        for (var i = offset; i <= offset + system.Count; i++)
+        int offset = Random.Range(0, allRepairables.Count);
+        for (var i = offset; i <= offset + allRepairables.Count; i++)
         {
-            if (!system[i % system.Count].broken)
+            if (!allRepairables[i % allRepairables.Count].broken)
             {
-                system[i % system.Count].Break();
+                allRepairables[i % allRepairables.Count].Break();
                 break;
             }
         }
@@ -85,26 +96,22 @@ public class Ship : MonoBehaviour
     public void Restart()
     {
         StopSailing();
-        foreach (List<Repairable> system in allRepairables)
+        foreach (Repairable component in allRepairables)
         {
-            foreach (Repairable component in system)
-            {
-                component.Repair();
-            }
+            component.Repair();
         }
-
     }
 
     public float HullPercentage()
     {
         int broken = 0;
-        for (int i = 0; i < hullComponents.Count; i++)
+        for (int i = 0; i < allRepairables.Count; i++)
         {
-            if (hullComponents[i].broken)
+            if (allRepairables[i].broken)
             {
                 broken++;
             }
         }
-        return broken / (float)hullComponents.Count;
+        return broken / (float)10;
     }
 }
