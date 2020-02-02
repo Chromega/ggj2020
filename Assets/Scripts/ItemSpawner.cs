@@ -26,10 +26,8 @@ public class ItemSpawner : MonoBehaviour
 
     private void Start()
     {
-        // Start with 2 random items
-        SpawnRandomItem();
-        SpawnRandomItem();
     }
+
     // Update is called once per frame
     void Update()
     {
