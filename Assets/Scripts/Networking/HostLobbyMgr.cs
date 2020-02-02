@@ -26,6 +26,7 @@ public class HostLobbyMgr : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         if (!PhotonNetwork.IsConnected)
         {
             // hard code this since git keeps dropping it
@@ -75,11 +76,11 @@ public class HostLobbyMgr : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        int idx = PhotonNetwork.CurrentRoom.PlayerCount - 2;
+        /*int idx = PhotonNetwork.CurrentRoom.PlayerCount - 2;
         if (idx < lobbyCharacters.Length && idx >= 0)
         {
             lobbyCharacters[idx].Appear();
-        }
+        }*/
     }
 
     // Update is called once per frame
@@ -95,7 +96,25 @@ public class HostLobbyMgr : MonoBehaviourPunCallbacks
             }
         }
 
-        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
+        for (int i = 0; i < lobbyCharacters.Length; ++i)
+        {
+            if (PlayerControllerBase.sExistingControllers.ContainsKey(i))
+            {
+                if (!lobbyCharacters[i].GetAppeared())
+                {
+                    lobbyCharacters[i].Appear();
+                }
+            }
+            else
+            {
+                if (lobbyCharacters[i].GetAppeared())
+                {
+                    lobbyCharacters[i].Hide();
+                }
+            }
+        }
+
+        if (PhotonNetwork.CurrentRoom!= null && PhotonNetwork.CurrentRoom.PlayerCount > 1)
         {
             startText.text = "Press SPACE to start";
         }

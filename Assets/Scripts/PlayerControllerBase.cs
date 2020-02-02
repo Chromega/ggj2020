@@ -6,7 +6,7 @@ public abstract class PlayerControllerBase : MonoBehaviour
 {
     public static Dictionary<int, PlayerControllerBase> sExistingControllers = new Dictionary<int, PlayerControllerBase>();
     //Not currently synched to net controller
-    protected int playerIdx;
+    protected int playerIdx=0;
 
     public event System.Action<int> onItemUsed;
     public event System.Action<int> onItemDropped;
@@ -33,6 +33,11 @@ public abstract class PlayerControllerBase : MonoBehaviour
     {
         playerIdx = idx;
         sExistingControllers[idx] = this;
+    }
+
+    public int GetPlayerIndex()
+    {
+        return playerIdx;
     }
 
     //The client sets position from the UI here!

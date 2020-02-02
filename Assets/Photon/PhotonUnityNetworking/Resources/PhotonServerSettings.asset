@@ -18,7 +18,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: usw
     Server: 
     Port: 0
     Protocol: 0
@@ -39,5 +39,6 @@ MonoBehaviour:
   - SetInputRpc
   - UseItemRpc
   - SetRepairTypeHelperTextRpc
+  - SetPlayerIndexRpc
   DisableAutoOpenWizard: 1
   ShowSettings: 1
