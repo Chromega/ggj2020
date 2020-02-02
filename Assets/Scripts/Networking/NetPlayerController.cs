@@ -9,8 +9,8 @@ public class NetPlayerController : PlayerControllerBase
     private PhotonView photonView;
 
     public Vector2 input;
-    public string[] netInventory;
-    public string repairTypeHelperText;
+    public string[] netInventory; // TODO: this should be made protected so no one else overrides
+    public string repairTypeHelperText; // TODO: this should be made protected so no one else overrides
 
     // Start is called before the first frame update
     void Awake()
@@ -74,6 +74,11 @@ public class NetPlayerController : PlayerControllerBase
         return netInventory;
     }
 
+    public int GetPlayerIndex()
+    {
+        return playerIdx;
+    }
+
     public override Vector2 GetInput()
     {
         return input;
@@ -83,9 +88,22 @@ public class NetPlayerController : PlayerControllerBase
         photonView.RPC("UseItemRpc", RpcTarget.MasterClient, index);
     }
 
+    public override void SetPlayerIndex(int index)
+    {
+        base.SetPlayerIndex(index);
+        photonView.RPC("SetPlayerIndexRpc", RpcTarget.Others, index);
+    }
+
     public override void SetRepairTypeHelperText(string repairTypeHelperText)
     {
         photonView.RPC("SetRepairTypeHelperTextRpc", RpcTarget.Others, repairTypeHelperText);
+    }
+
+    [PunRPC]
+    void SetPlayerIndexRpc(int index)
+    {
+        this.playerIdx = index;
+        //Debug.Log("Client input is " + pos.x + ", " + pos.y);
     }
 
     [PunRPC]
