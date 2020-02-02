@@ -19,6 +19,6 @@ public class UIManager : Singleton<UIManager>
     // Update is called once per frame
     void Update()
     {
-        progressText.text = $"Voyage progress {(Game.Instance.voyage.GetCurrentProgress() * 100).ToString("0.00")}%. Score: {Game.Instance.score}";
+        progressText.text = $"Voyage progress {(Game.Instance.voyage.GetCurrentProgress() * 100).ToString("0")}%. Score: {Game.Instance.score}";
     }
 }
