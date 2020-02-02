@@ -55,6 +55,8 @@ public class Repairable : MonoBehaviour
             // Temp handle no items existing
             repairType = RepairType.Tape;
         }
+        AudioSource audio = GetComponentInChildren<AudioSource>();
+        if (audio) audio.Play();
     }
 
     // Set the state of the object to fixed
