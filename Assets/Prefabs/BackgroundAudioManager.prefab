@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6448755307315783094}
   - component: {fileID: 6448755307315783092}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: BackgroundAudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,5 +140,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc75cfb15de94e11a4b1de8d6ab2054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startClip: {fileID: 8300000, guid: 5595549562d044829991b62095d0527f, type: 3}
-  loopClip: {fileID: 8300000, guid: b29d9807329f64c92b171d89dc65ef68, type: 3}
+  startClip: {fileID: 8300000, guid: c283ec9094ea3426b815009a777655b1, type: 3}
+  loopClip: {fileID: 8300000, guid: f64e702692e394d119e6329aa7cf3f7a, type: 3}
