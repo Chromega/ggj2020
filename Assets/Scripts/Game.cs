@@ -124,6 +124,8 @@ public class Game : Singleton<Game>
 
     void Restart()
     {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LobbyHost");
+        /*
         voyage.ResetVoyage();
         gameOver = false;
         Time.timeScale = 1;
@@ -144,7 +146,7 @@ public class Game : Singleton<Game>
         if (startVoyageCoroutine != null) {
             StopCoroutine(startVoyageCoroutine);
         }
-        startVoyageCoroutine = StartCoroutine(StartVoyage());
+        startVoyageCoroutine = StartCoroutine(StartVoyage());*/
     }
 
     void Pause()

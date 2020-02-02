@@ -16,6 +16,8 @@ public class HostLobbyMgr : MonoBehaviourPunCallbacks
 
     public bool gameStarted;
 
+    public UnityEngine.UI.Text startText;
+
     void Awake()
     {
         Instance = this;
@@ -24,13 +26,16 @@ public class HostLobbyMgr : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        // hard code this since git keeps dropping it
-        PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "66c28b24-7787-47a5-ba65-ebaf45f5c125";
-        PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = "usw";
+        if (!PhotonNetwork.IsConnected)
+        {
+            // hard code this since git keeps dropping it
+            PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "66c28b24-7787-47a5-ba65-ebaf45f5c125";
+            PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = "usw";
 
-        PhotonNetwork.AutomaticallySyncScene = false;
-        PhotonNetwork.LocalPlayer.NickName = Random.Range(0,1000).ToString();
-        PhotonNetwork.ConnectUsingSettings();
+            PhotonNetwork.AutomaticallySyncScene = false;
+            PhotonNetwork.LocalPlayer.NickName = Random.Range(0, 1000).ToString();
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
 
     public override void OnConnectedToMaster()
@@ -82,12 +87,21 @@ public class HostLobbyMgr : MonoBehaviourPunCallbacks
     {
         if (Photon.Pun.PhotonNetwork.InRoom)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && PhotonNetwork.CurrentRoom.PlayerCount > 1)
             {
                 if (!gameStarted) {
                     StartCoroutine(StartGameCoroutine());
                }
             }
+        }
+
+        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
+        {
+            startText.text = "Press SPACE to start";
+        }
+        else
+        {
+            startText.text = "Waiting for players to connect...";
         }
     }
 

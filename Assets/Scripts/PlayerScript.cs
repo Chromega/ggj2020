@@ -61,6 +61,9 @@ public class PlayerScript : MonoBehaviour
 
             this.Move(convertedX + convertedY);
         }
+
+        if (!playerControllerBase)
+            gameObject.SetActive(false);
     }
 
     public void Move(Vector3 movement) {
