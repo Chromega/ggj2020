@@ -95,6 +95,10 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void Reset() {
+        inventory.Reset();
+    }
+
     void OnItemDeactivated() {
         this.lockMovement = false;
         this.usingItem = false;

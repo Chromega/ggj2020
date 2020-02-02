@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,6 +60,13 @@ public class PickupableFactory : Singleton<PickupableFactory>
             }
         }
         return types;
+    }
+
+    public void Reset()
+    {
+        foreach (Pickupable p in pool) {
+            Deactivate(p);
+        }
     }
 
     public int TotalActiveItems()
