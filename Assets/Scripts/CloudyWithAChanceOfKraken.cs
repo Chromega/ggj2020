@@ -6,7 +6,7 @@ public class CloudyWithAChanceOfKraken : MonoBehaviour
 {
     public Animator animator;
 
-    private float timeToKraken = 5f;
+    private float timeToKraken = 50f;
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class CloudyWithAChanceOfKraken : MonoBehaviour
         if (timeToKraken < 0 && Random.value < 0.01)
         {
             animator.SetTrigger("kraken");
-            timeToKraken = Random.Range(2, 10);
+            timeToKraken = Random.Range(10, 15);
         }
     }
 
