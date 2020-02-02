@@ -24,7 +24,6 @@ public class Game : Singleton<Game>
         ship = GameObject.Find("Ship").GetComponent<Ship>();
         water = GameObject.Find("environ-water");
         voyage = GetComponent<VoyageManager>();
-        //player1 = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
 
     private void Start()
@@ -44,7 +43,7 @@ public class Game : Singleton<Game>
 			obj.SetActive(false);
 		}
         UnPause();
-        voyage.StartVoyage();
+        StartCoroutine(StartVoyage());
     }
     // Update is called once per frame
     void Update()
@@ -74,6 +73,12 @@ public class Game : Singleton<Game>
         {
             Victory();
         }
+    }
+
+    IEnumerator StartVoyage() {
+        yield return new WaitForSeconds(5.5f);
+        Debug.Log("StartVoyage");
+        voyage.StartVoyage();
     }
 
     public float GetWaterLevel()
@@ -123,7 +128,7 @@ public class Game : Singleton<Game>
 			obj.SetActive(false);
 		}
         UnPause();
-        voyage.StartVoyage();
+        StartCoroutine(StartVoyage());
     }
 
     void Pause()

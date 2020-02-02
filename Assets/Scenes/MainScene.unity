@@ -657,10 +657,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1835816254929988575, guid: babcbc4548191438d9545d521e9b1c5b,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1835816255107215210, guid: babcbc4548191438d9545d521e9b1c5b,
         type: 3}
       propertyPath: m_Intensity
-      value: 1
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835816255192172386, guid: babcbc4548191438d9545d521e9b1c5b,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2592037280810204987, guid: babcbc4548191438d9545d521e9b1c5b,
         type: 3}
@@ -1295,7 +1305,7 @@ PrefabInstance:
     - target: {fileID: 5985484629322307118, guid: a8a09381069334dc5a2d279743546b24,
         type: 3}
       propertyPath: goalDistance
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5985484629322307119, guid: a8a09381069334dc5a2d279743546b24,
         type: 3}
