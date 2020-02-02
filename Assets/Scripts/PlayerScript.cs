@@ -75,6 +75,10 @@ public class PlayerScript : MonoBehaviour
     }
 
     public void UseItem(int index) {
+        if (Time.timeScale == 0) {
+            // Do nothing when time is frozen
+            return;
+        }
         if (!usingItem) {
             Item item = inventory.items[index];
             if (item != null) {
@@ -89,6 +93,10 @@ public class PlayerScript : MonoBehaviour
                 pickupable.Deactivate(this.OnItemDeactivated);
             }
         }
+    }
+
+    public void Reset() {
+        inventory.Reset();
     }
 
     void OnItemDeactivated() {

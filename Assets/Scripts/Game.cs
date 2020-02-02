@@ -83,7 +83,6 @@ public class Game : Singleton<Game>
     }
     void GameOver()
     {
-        Debug.Log("GAME OVER!");
         gameOver = true;
         Time.timeScale = 0;
         foreach (GameObject obj in gameOverObjects) {
@@ -96,7 +95,11 @@ public class Game : Singleton<Game>
         voyage.ResetVoyage();
         gameOver = false;
         Time.timeScale = 1;
-
+        player1?.Reset();
+        player2?.Reset();
+        player3?.Reset();
+        player4?.Reset();
+        PickupableFactory.Instance.Reset();
         foreach (GameObject obj in gameOverObjects) {
 			obj.SetActive(false);
 		}
