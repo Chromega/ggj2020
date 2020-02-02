@@ -109,7 +109,10 @@ public class Game : Singleton<Game>
         Time.timeScale = 0;
         foreach (GameObject obj in gameOverObjects) {
 			obj.SetActive(true);
+            AudioSource audio = obj.GetComponent<AudioSource>();
+            if (audio != null) audio.Play();
 		}
+        backgroundAudio.audioSource.Stop();
     }
 
     void Victory()
@@ -118,8 +121,11 @@ public class Game : Singleton<Game>
         gameOver = true;
         foreach (GameObject obj in victoryObjects) {
 			obj.SetActive(true);
+            AudioSource audio = obj.GetComponent<AudioSource>();
+            if (audio != null) audio.Play();
 		}
         Time.timeScale = 0;
+        backgroundAudio.audioSource.Stop();
     }
 
     void Restart()
