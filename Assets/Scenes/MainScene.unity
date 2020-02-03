@@ -1588,11 +1588,6 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 211770943619266516}
-    - target: {fileID: 5985484629322307118, guid: a8a09381069334dc5a2d279743546b24,
-        type: 3}
-      propertyPath: goalDistance
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5985484629322307119, guid: a8a09381069334dc5a2d279743546b24,
         type: 3}
       propertyPath: m_Name

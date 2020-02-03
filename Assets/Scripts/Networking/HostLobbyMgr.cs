@@ -59,7 +59,7 @@ public class HostLobbyMgr : MonoBehaviourPunCallbacks
         string roomName = SystemInfo.deviceName + currTimeStr;
 
               Debug.Log("Creating room "+roomName);
-              RoomOptions options = new RoomOptions { MaxPlayers = 4 };
+              RoomOptions options = new RoomOptions { MaxPlayers = 5 };
               PhotonNetwork.CreateRoom(roomName, options, null);
     }
 

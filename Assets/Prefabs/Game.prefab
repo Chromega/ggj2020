@@ -47,10 +47,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voyage: {fileID: 5985484629322307118}
   ship: {fileID: 0}
+  backgroundAudio: {fileID: 0}
   player1: {fileID: 0}
   player2: {fileID: 0}
   player3: {fileID: 0}
   player4: {fileID: 0}
+  water: {fileID: 0}
+  score: 0
 --- !u!114 &5985484629322307118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceProgress: 0
-  goalDistance: 600
+  goalDistance: 10
   underway: 0
 --- !u!114 &891731584411091232
 MonoBehaviour:
