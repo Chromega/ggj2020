@@ -1,38 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>GGJ2020</title>
+    <title>Unity WebGL Player | GGJ2020</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-        window.UnityLoader = window.UnityLoader || {
-            Error: {}, instantiate: function () {
-            }
-        };
-        window.buildPath = "Build/host.json";
-        window.gameInstance = null;
-        if (!/UNITY_WEBGL_BUILD_URL/.test(buildPath)) {
-            window.gameInstance = UnityLoader.instantiate("gameContainer", buildPath, 
-            {
-               onProgress: UnityProgress, 
-               compatibilityCheck: function(e, t, r)
-               {
-                  t();
-               }               
-            });
-        }
-
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/host.json", {onProgress: UnityProgress});
     </script>
-</head>
-<body style="height:100%;">
-<div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+  </head>
+  <body>
     <div class="webgl-content">
-        <div id="gameContainer" style="width: 375px; height: 550px"></div>
+      <div id="unityContainer" style="width: 1024px; height: 768px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">GGJ2020</div>
+      </div>
     </div>
-</div
-</body>
+  </body>
+</html>
